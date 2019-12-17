@@ -6,3 +6,4 @@ exports.mainroute=(req,res,next) => {
     res.sendFile(path.join(__dirname,'../../front/views/home/index.html'));
 
 }
+
