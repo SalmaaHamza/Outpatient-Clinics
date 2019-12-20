@@ -8,13 +8,23 @@ const Dates=require('./models/date')
 const Appointment=require('./models/appointment')
 const mainRoutes = require('./routes/main')
 const app = express()
-
+//const mysql = require('mysql2')
 // parsing the request's body  to enable working with it
 app.use(bodyParser.urlencoded({extended:false}))
 const viewsDirectory = path.join(__dirname,'../front/views')
 app.set('views',viewsDirectory)
 app.set('view engine','hbs')
+<<<<<<< HEAD:server.js
 app.use(express.static(__dirname+'/public/'))
+=======
+// app.use(express.static(publicDirectory))
+// var connectionmysql = mysql.createConnection({
+//   host:'localhost',
+//   user:'root',
+//   password:'mysql',
+//   database:'outpatient'
+// })
+>>>>>>> 12ae1288257f4c8e5c46201107eae2159bb42119:back/server.js
 
 
 
