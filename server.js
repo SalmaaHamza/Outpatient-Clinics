@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const DirName=require('./util/path');
 const bodyParser=require('body-parser');
 const sequelize=require('./util/db')
 const Doctor=require('./models/doctor')
@@ -11,10 +12,10 @@ const app = express()
 
 // parsing the request's body  to enable working with it
 app.use(bodyParser.urlencoded({extended:false}))
-const viewsDirectory = path.join(__dirname,'../front/views')
+const viewsDirectory = path.join(DirName,'views/home');
 app.set('views',viewsDirectory)
-app.set('view engine','hbs')
-app.use(express.static(__dirname+'/public/'))
+app.set('view engine','ejs');
+app.use(express.static(DirName+'/public/'));
 
 
 

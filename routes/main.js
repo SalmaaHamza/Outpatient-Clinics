@@ -90,5 +90,13 @@ router.post('/login',(req,res)=>{
     });
 });
 
+router.get('/patient/Home/:id',controller.patientHome);
+router.get('/patient/table/:id',controller.patientTable);
+router.get('/patient/edit/:id',controller.patientEdit);
+router.get('/patient/:id',controller.patientId);
+
+
+
+
 module.exports=router;
 
