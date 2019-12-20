@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({extended:false}))
 const viewsDirectory = path.join(__dirname,'../front/views')
 app.set('views',viewsDirectory)
 app.set('view engine','hbs')
-// app.use(express.static(publicDirectory))
+app.use(express.static(__dirname+'/public/'))
 
 
 
