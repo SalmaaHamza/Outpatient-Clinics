@@ -26,15 +26,14 @@ exports.patientHome=(req,res,next) => {
 }
 
 exports.patientTable=(req,res,next) => {
-    console.log("table here");
     const Id = req.params.id;
     res.sendFile(path.join(DirName,'views','home/table.html'));
   
 }
 
 exports.patientEdit=(req,res,next) => {
-    
     const Id = req.params.id;
     res.sendFile(path.join(DirName,'views','home/user.html'));
   
 }
+

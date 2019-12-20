@@ -1,5 +1,6 @@
 const express = require('express');
 const controller = require('../controllers/control');
+const clinics = require('../controllers/clinics');
 const path = require('path');
 const router = express.Router();
 
@@ -90,6 +91,13 @@ router.post('/login',(req,res)=>{
     });
 });
 
+router.get('/patient/Home/Neurology',clinics.Neurology);
+router.get('/patient/Home/Cardiology',clinics.Cardiology);
+router.get('/patient/Home/Nuclear_Magnetic',clinics.Nuclear_Magnetic);
+router.get('/patient/Home/Opthalmology',clinics.Opthalmology);
+router.get('/patient/Home/Surgical',clinics.Surgical);
+router.get('/patient/Home/Traumatology',clinics.Traumatology);
+router.post('/patient/Home/appointment',clinics.appoint);
 router.get('/patient/Home/:id',controller.patientHome);
 router.get('/patient/table/:id',controller.patientTable);
 router.get('/patient/edit/:id',controller.patientEdit);
