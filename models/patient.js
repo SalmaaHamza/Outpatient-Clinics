@@ -8,6 +8,14 @@ const Patient= sequelize.define('Patient',{
     allowNull:false,
     primaryKey:true
     },
+    Email:{
+    type:sequelize.STRING,
+    allowNull:false,    
+    },
+    Password:{
+    type:sequelize.STRING,
+    allowNull:false    
+    },
     FName: {
     type:Sequelize.STRING,
     allowNull:false,

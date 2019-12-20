@@ -8,13 +8,14 @@ const Dates=require('./models/date')
 const Appointment=require('./models/appointment')
 const mainRoutes = require('./routes/main')
 const app = express()
-//const mysql = require('mysql2')
+
 // parsing the request's body  to enable working with it
 app.use(bodyParser.urlencoded({extended:false}))
 const viewsDirectory = path.join(__dirname,'../front/views')
 app.set('views',viewsDirectory)
 app.set('view engine','hbs')
-app.use(express.static(__dirname+'/public/'))
+// app.use(express.static(publicDirectory))
+
 
 
 
@@ -24,13 +25,13 @@ app.use(mainRoutes);
 
 
 
-// // Defining the relations between tables  
+// Defining the relations between tables  
 Dates.belongsTo(Doctor ,{constraints:true, onDelete:'CASCADE' });
 Doctor.hasMany(Dates);
 Doctor.belongsToMany(Patient,{through: Appointment})
 Patient.belongsToMany(Doctor,{through: Appointment})
 
-// // synchronizing with database 
+// synchronizing with database 
 sequelize.sync().then(res => { 
   app.listen(3000,() => {
     console.log('Running')
@@ -40,5 +41,6 @@ sequelize.sync().then(res => {
 .catch(err => {
   console.log("err:" ,err);
 })
+
 
 
