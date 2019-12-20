@@ -1,3 +1,18 @@
+/*=========================================================
+ Light Bootstrap Dashboard - v2.0.1
+=========================================================
+
+ Product Page: https://www.creative-tim.com/product/light-bootstrap-dashboard
+ Copyright 2019 Creative Tim (https://www.creative-tim.com)
+ Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard/blob/master/LICENSE)
+
+ Coded by Creative Tim
+
+=========================================================
+
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.*/
+ 
+/*      light colors         */
 
 @keyframes spin {
     from {
@@ -2089,7 +2104,7 @@ fieldset[disabled] .form-control {
 }
 
 .navbar.fixed {
-    /* width: calc(100% - $sidebar-width); */
+    width: calc(100% - $sidebar-width);
     right: 0;
     left: auto;
     border-radius: 0;
@@ -4716,7 +4731,7 @@ License - nucleoapp.com/license/
 }
 
 /*------------------------
-	base class definition
+    base class definition
 -------------------------*/
 
 .nc-icon {
@@ -4893,7 +4908,7 @@ License - nucleoapp.com/license/
 }
 
 /*------------------------
-	font icons
+    font icons
 -------------------------*/
 
 .nc-air-baloon::before {
@@ -5308,4 +5323,114 @@ padding: 15px 25px;
 img {
 width: 100%;
 height: 100%;
+}
+
+
+
+img {
+  border-radius: 50%;
+}
+
+
+
+header .top-bar .cta-btn {
+  display: inline-block;
+  padding-right: 15px;
+  padding-left: 15px;
+  background: #5AC8D8;
+}
+
+header .top-bar .cta-btn:hover {
+  -webkit-box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+header .top-bar {
+  background: #007bff;
+  opacity: 0.65
+  background:url('../public/images/img_thumb_3.jpg');
+  position: relative;
+}
+
+header .top-bar a {
+  color: #fff;
+  padding: 10px;
+  font-size: 13px;
+  display: inline-block;
+}
+
+header .top-bar .cta-btn {
+  display: inline-block;
+  padding-right: 15px;
+  padding-left: 15px;
+  background: #5AC8D8;
+}
+
+header .top-bar .cta-btn:hover {
+  -webkit-box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+header .top-bar .social {
+  margin-bottom: 0;
+}
+
+header .top-bar .social li {
+  display: inline-block;
+  text-align: center;
+}
+
+header .top-bar .social li a {
+  color: #fff;
+  padding: 10px;
+  width: 40px;
+  display: inline-block;
+}
+
+@media (max-width: 991px) {
+  header .top-bar .social li a {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: inherit;
+  }
+}
+
+header .top-bar .social li a:hover {
+  background: #5AC8D8;
+  color: #fff;
+  -webkit-box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.btn, .form-control {
+  outline: none;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+#modalAppointment .modal-content {
+  border-radius: 0;
+  border: none;
+}
+
+#modalAppointment .modal-body, #modalAppointment .modal-footer {
+  padding: 40px;
+}
+.text-black {
+  color: #000 !important;
+}
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+.layer {
+    background-color: rgba(248, 247, 216, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
