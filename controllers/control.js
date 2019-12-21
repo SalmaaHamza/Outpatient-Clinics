@@ -22,19 +22,21 @@ exports.patientId= (req,res,next) => {
 exports.patientHome=(req,res,next) => {
     
   const Id = req.params.id;
-  res.sendFile(path.join(DirName,'views','home/dashboard.html'));
+//   res.sendFile(path.join(DirName,'views','home/dashboard.html'));
+res.render('dashboard',{id:Id,layout:false});
 
 }
 
 exports.patientTable=(req,res,next) => {
     const Id = req.params.id;
-    res.sendFile(path.join(DirName,'views','home/table.html'));
+    res.render('tableP',{id:Id,layout:false});
   
 }
 
 exports.patientEdit=(req,res,next) => {
     const Id = req.params.id;
-    res.sendFile(path.join(DirName,'views','home/user.html'));
+
+    res.render('user',{id:Id,layout:false});
   
 }
 exports.signin=(req,res,next)=>{  
