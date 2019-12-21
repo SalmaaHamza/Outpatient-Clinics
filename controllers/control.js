@@ -12,45 +12,22 @@ exports.mainroute=(req,res,next) => {
 }
 
 
-exports.patientId= (req,res,next) => {
-      
-    const Id = req.params.id;
-    res.redirect('/patient/Home/'+Id);
-
-}
-
-exports.patientHome=(req,res,next) => {
-    
-  const Id = req.params.id;
-//   res.sendFile(path.join(DirName,'views','home/dashboard.html'));
-res.render('dashboard',{id:Id,layout:false});
-
-}
-
-exports.patientTable=(req,res,next) => {
-    const Id = req.params.id;
-    res.render('tableP',{id:Id,layout:false});
-  
-}
-
-exports.patientEdit=(req,res,next) => {
-    const Id = req.params.id;
-
-    res.render('user',{id:Id,layout:false});
-  
-}
 exports.signin=(req,res,next)=>{  
     res.sendFile(path.join(DirName,'views','home/signin.html'));
 }
+
+
 exports.signup=(req,res,next)=>{  
     res.sendFile(path.join(DirName,'views','home/signup.html'));
 
 
 }
 
+
 exports.userDoctor=(req,res,next)=>{
     res.sendFile(path.join(DirName,'views','home/userDoctor.hbs'));
 }
+
 // exports.
 
 exports.post_signup = (req,res)=>{
@@ -155,6 +132,7 @@ exports.post_signinD =  (req,res,next)=>{
        }
     });
 }
+
 exports.post_signout = (req,res,next)=>{
     // res.sendFile(path.join(DirName,'views','home/index.html'));
     res.redirect('/');

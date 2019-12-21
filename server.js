@@ -9,6 +9,7 @@ const Patient=require('./models/patient')
 const Dates=require('./models/date')
 const Appointment=require('./models/appointment')
 const mainRoutes = require('./routes/main')
+const patientRoutes = require('./routes/patient')
 const app = express()
 
 app.engine('handlebars', exphbs({layout: false}));
@@ -21,7 +22,10 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static(DirName+'/public/'));
 
 // using the routes in the routes file 
+app.use(patientRoutes);
 app.use(mainRoutes);
+
+
 
 
 // Defining the relations between tables  
