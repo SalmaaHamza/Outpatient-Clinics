@@ -56,6 +56,8 @@ exports.post_signup = (req,res)=>{
         Age:req.body.Age,
         Phone: req.body.Phone,
         Description: req.body.Description,
+        Username: req.body.Username,
+        Address: req.body.Address
     });
 
 console.log(newpatient)
