@@ -84,7 +84,8 @@ console.log(newpatient)
                         newpatient.Password = hash;
                         newpatient.save().then(savedUser => {
                             //  req.flash('success_register','You are now registered,Please login');
-                            res.sendFile(path.join(DirName,'views','home/user.html'));
+                            // res.sendFile(path.join(DirName,'views','home/user.html'));
+                            res.redirect('/patient/'+newpatient.PSSN);
   
                             // res.render('home/login', {
                             //     email : req.body.email,
@@ -109,15 +110,18 @@ console.log(newpatient)
 }
 
 exports.post_signin = (req,res,next)=>{
+    let User=null;
     let Email = req.body.Email;
     let Password = req.body.Password;
     patient.findOne({where:{Email:Email}}).then(user=>{
-       if(!user){
+       User=user;
+        if(!user){
            console.log('email not found')
        } else{
            bcrypt.compare(Password, user.Password).then((returnedPassword) => {
                if (returnedPassword){
-                res.sendFile(path.join(DirName,'views','home/user.html'));
+                // res.sendFile(path.join(DirName,'views','home/user.html'));
+                res.redirect('/patient/'+User.PSSN);
   
                }
                else{
@@ -129,6 +133,7 @@ exports.post_signin = (req,res,next)=>{
     });
 }
 exports.post_signout = (req,res,next)=>{
-    res.sendFile(path.join(DirName,'views','home/index.html'));
+    // res.sendFile(path.join(DirName,'views','home/index.html'));
+    res.redirect('/');
 }
 
