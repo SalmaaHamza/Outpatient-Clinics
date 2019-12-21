@@ -16,9 +16,13 @@ const Doctor= sequelize.define('Doctor',{
     type:Sequelize.STRING,
     allowNull:false,
     },
-    Description:{
-    type:Sequelize.TEXT,
-    allowNull:true,
+    Email:{
+    type:Sequelize.STRING,
+    allowNull:false,
+    },
+    Password:{
+    type:Sequelize.STRING,
+    allowNull:false,
     },
     Phone:{
     type:Sequelize.BIGINT(20),

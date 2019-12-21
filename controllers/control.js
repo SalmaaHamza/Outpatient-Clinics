@@ -2,7 +2,7 @@ const path = require('path')
 const DirName=require('../util/path');
 const bcrypt = require('bcryptjs')
 const patient = require('../models/patient')
-
+const doctor = require('../models/doctor')
 // the main route which render the main html page
 
 exports.mainroute=(req,res,next) => {
@@ -45,6 +45,11 @@ exports.signin=(req,res,next)=>{
 exports.signup=(req,res,next)=>{  
     res.sendFile(path.join(DirName,'views','home/signup.html'));
 
+
+}
+
+exports.userDoctor=(req,res,next)=>{
+    res.sendFile(path.join(DirName,'views','home/userDoctor.hbs'));
 }
 // exports.
 
@@ -85,16 +90,8 @@ console.log(newpatient)
                     bcrypt.hash(newpatient.Password, salt, (err, hash) => {
                         newpatient.Password = hash;
                         newpatient.save().then(savedUser => {
-                            //  req.flash('success_register','You are now registered,Please login');
-                            // res.sendFile(path.join(DirName,'views','home/user.html'));
-                            res.redirect('/patient/'+newpatient.PSSN);
-  
-                            // res.render('home/login', {
-                            //     email : req.body.email,
-                            //     password : req.body.password,
-                            //
-                            // });
-                           // res.send(savedUser).status(200);
+                        
+                            res.redirect('/patient/'+newpatient.PSSN); 
                         });
                         console.log(hash);
                     });
@@ -111,7 +108,7 @@ console.log(newpatient)
 
 }
 
-exports.post_signin = (req,res,next)=>{
+exports.post_signinP = (req,res,next)=>{
     let User=null;
     let Email = req.body.Email;
     let Password = req.body.Password;
@@ -124,6 +121,30 @@ exports.post_signin = (req,res,next)=>{
                if (returnedPassword){
                 // res.sendFile(path.join(DirName,'views','home/user.html'));
                 res.redirect('/patient/'+User.PSSN);
+  
+               }
+               else{
+                   console.log('the password is not correct');
+                   res.send('the password is not correct').status(200)
+               }
+           });
+       }
+    });
+}
+exports.post_signinD =  (req,res,next)=>{
+    let User=null;
+    let Email = req.body.Email;
+    let Password = req.body.Password;
+    doctor.findOne({where:{Email:Email}}).then(user=>{
+       User=user;
+        if(!user){
+           console.log('email not found')
+       } else{
+           compare(Password, user.Password).then((returnedPassword) => {
+               if (returnedPassword){
+                res.sendFile(path.join(DirName,'views','home/userDoctor.hbs'));
+               // res.redirect('/patient/'+User.PSSN);
+                
   
                }
                else{

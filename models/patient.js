@@ -34,7 +34,7 @@ const Patient= sequelize.define('Patient',{
     },
     Password:{
     type:Sequelize.STRING,
-    allowNull:false    
+    allowNull:false,    
     },
     Username:{
     type:Sequelize.STRING,
