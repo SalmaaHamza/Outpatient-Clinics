@@ -36,10 +36,10 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav nav ml-auto">
-	          <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
-	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
-                 <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><span>Sign Up</span></a></li>
+	          <li class="nav-item"><a href="/" class="nav-link"><span>Home</span></a></li>
+	          <li class="nav-item"><a href="/#about-section" class="nav-link"><span>About</span></a></li>
+                 <li class="nav-item"><a href="/#contact-section" class="nav-link"><span>Contact</span></a></li>
+                <li class="nav-item"><a href="/signup" class="nav-link"><span>Sign Up</span></a></li>
 	       
 	         
 	        </ul>
@@ -55,17 +55,17 @@
   <div id="bg"></div>
     
 
-<form action="">
+<form action="/signin" method="post">
         <h2 style="color:#0066CC;font-family:sans-serif ;">Sign In</h2> 
 
     <label for=""></label>
-  <input type="text" name="" id="" placeholder="email" class="email">
+  <input type="email" name="Email" id="" placeholder="email" class="email">
     
   <label for=""></label>
-  <input type="password" name="" id="" placeholder="password" class="pass">
+  <input type="password" name="Password" id="" placeholder="password" class="pass">
     <br>
     <input type="checkbox" value="lsRememberMe" id="rememberMe" style="display: inline-block;"> <label style="color: #0066CC ;">Remember me</label>
-  <button type="submit">Sign in</button>
+  <button type="submit" href="/home/user">Sign in</button>
     
 <br>
 <br>

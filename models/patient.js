@@ -5,36 +5,36 @@ const sequelize=require('../util/db.js');
 const Patient= sequelize.define('Patient',{
     PSSN: {
     type:Sequelize.BIGINT(20),
-    allowNull:false,
+    //allowNull:false,
     primaryKey:true
     },
     FName: {
     type:Sequelize.STRING,
-    allowNull:false,
+   // allowNull:false,
     },
     LName:{
     type:Sequelize.STRING,
-    allowNull:false,
+ //   allowNull:false,
     },
     Description:{
     type:Sequelize.TEXT,
     allowNull:true,
     },
     Phone:{
-    type:Sequelize.BIGINT(20),
-    allowNull:false,
+    type:Sequelize.INTEGER,
+   // allowNull:false,
     },
     Age:{
     type:Sequelize.INTEGER,
-    allowNull:false,
+    //allowNull:false,
     },
     Email:{
     type:Sequelize.STRING,
-    allowNull:false,    
+   // allowNull:false,    
     },
     Password:{
     type:Sequelize.STRING,
-    allowNull:false    
+   // allowNull:false    
     }
 
 })

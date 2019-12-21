@@ -17,13 +17,8 @@ app.set('views',viewsDirectory)
 app.set('view engine','ejs');
 app.use(express.static(DirName+'/public/'));
 
-
-
-
 // using the routes in the routes file 
 app.use(mainRoutes);
-
-
 
 
 // Defining the relations between tables  
