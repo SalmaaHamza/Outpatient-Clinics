@@ -55,7 +55,14 @@ exports.post_signupD = (req,res)=>{
         img:req.body.img
 
     });
+    if (req.body.Password !== req.body.ConfirmPassword) {
+        
+      //  res.sendFile(path.join(DirName,'views','errors/signupwrongpassD.html'));
+      console.log('ay klam')
 
+    }
+        
+else{
 
         doctor.findOne({where:{Email: newdoctor.Email}}).then(user => {
            
@@ -64,11 +71,14 @@ exports.post_signupD = (req,res)=>{
                     bcrypt.hash(newdoctor.Password, salt, (err, hash) => {
                         newdoctor.Password = hash;
                         newdoctor.save().then(savedUser => {
-                            res.redirect('/userD.handlebars');
+                          //  res.redirect('');
+                            res.sendFile(path.join(DirName,'views','home/userD.handlebars'));
+
+                        
 
                            
                         });
-                        console.log(hash);
+                       
                     });
                 });
             } else {
@@ -80,7 +90,7 @@ exports.post_signupD = (req,res)=>{
         });
 
     
-}
+}}
 
 exports.post_signup = (req,res)=>{
     
@@ -159,18 +169,16 @@ exports.post_signinD =  (req,res,next)=>{
     let Email = req.body.Email;
     let Password = req.body.Password;
     doctor.findOne({where:{Email:Email}}).then(user => {
-    //    console.log(user)
-        if(!user){
-            
+ 
+        if(!user){           
            
             res.sendFile(path.join(DirName,'views','errors/signinemailerrorD.html'));
            
        } else{
            bcrypt.compare(Password, user.Password).then((returnedPassword) => {
                if (returnedPassword){
-                res.sendFile(path.join(DirName,'views','home/userDoctor.html'));
-               // res.redirect('/patient/'+User.PSSN);
-                
+                res.sendFile(path.join(DirName,'views','home/userD.handlebars'));
+                  
   
                }
                else{
