@@ -6,8 +6,10 @@ const appointment =require('../models/appointment');
 
 
 exports.Neurology= (req,res,next) => {
+    const id= req.params.id;
+    console.log(id)
     doctor.findAll({where:{Dname:'Neurology'}}).then(result => {
-        res.render('clinics',{doctors:result, hasDoctor:result.length>0 ,layout:false});
+        res.render('clinics',{doctors:result, hasDoctor:result.length>0,id:id ,layout:false});
     });
     
 }

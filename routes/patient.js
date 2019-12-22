@@ -5,12 +5,12 @@ const router = express.Router();
 
 
 router.post('/edit/:id',clinics.editData);
-router.get('/patient/Home/Neurology',clinics.Neurology);
-router.get('/patient/Home/Cardiology',clinics.Cardiology);
-router.get('/patient/Home/Nuclear_Magnetic',clinics.Nuclear_Magnetic);
-router.get('/patient/Home/Opthalmology',clinics.Opthalmology);
-router.get('/patient/Home/Surgical',clinics.Surgical);
-router.get('/patient/Home/Traumatology',clinics.Traumatology);
+router.get('/patient/Neurology/:id',clinics.Neurology);
+router.get('/patient/Cardiology/:id',clinics.Cardiology);
+router.get('/patient/Nuclear_Magnetic/:id',clinics.Nuclear_Magnetic);
+router.get('/patient/Opthalmology/:id',clinics.Opthalmology);
+router.get('/patient/Surgical/:id',clinics.Surgical);
+router.get('/patient/Traumatology/:id',clinics.Traumatology);
 router.post('/patient/Home/appointment',clinics.appoint);
 
 
