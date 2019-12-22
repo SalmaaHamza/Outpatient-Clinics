@@ -86,13 +86,14 @@ exports.appoint= (req,res,next) => {
     
         return doctor.findOne({where:{DSSN:doctorId}})
         .then(D => {
-           return appointment.create({PSSN:P.PSSN,DSSN:D.DSSN,Price:date.split('-')[2],Description:description,Date:date.split('-')[0],Time:date.split('-')[1],Price:date.split('-')[2],DoctorFName:D.FName,DoctorLName:D.LName})
+           return appointment.create({PSSN:P.PSSN,DSSN:D.DSSN,Price:date.split('-')[2],Description:description,Date:date.split('-')[0],Time:date.split('-')[1],Price:date.split('-')[2],DoctorFName:D.FName,DoctorLName:D.LName,PatientFName:P.FName,PatientLName:P.LName})
             // return D.addPatient(P,{through:{Description:description, Date:date.split('-')[0],Time:date.split('-')[1],Price:date.split('-')[2],DoctorFName:D.FName,DoctorLName:D.LName}})
         })     
     })
-    .then(res.redirect('/patient/Home/'+patientId))
+    .then(res => {
+    } )
     .catch(err => console.log(err));
-
+    res.redirect('/patient/table/'+patientId)
 
     // doctorData.addPatient(patientData,{through:{Date:null}}).then().catch( err => console.log("apoint",err));
 // console.log(patientData.PSSN,doctorData.DSSN);
@@ -119,7 +120,6 @@ exports.patientTable=(req,res,next) => {
     const Id = req.params.id;
     appointment.findAll({where:{ PSSN:Id}})
     .then(appoints => {
-            console.log(appoints)
         res.render('tableP',{id:Id, appoints:appoints ,hasAppoint:appoints.length>0,layout:false})
     })
 
@@ -163,7 +163,6 @@ patient.findOne({where:{ PSSN:newpatient.PSSN }}).then(patient => {
     patient.save();
 })
 .then( result => {
-    console.log(result);
     res.redirect('/patient/edit/'+newpatient.PSSN)
 })
 .catch(err => console.log("ubdate patient",errr))

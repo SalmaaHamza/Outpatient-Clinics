@@ -25,6 +25,14 @@ const Appointment= sequelize.define('Appointments',{
         type:Sequelize.STRING,
         allowNull:false
     },
+    PatientFName:{
+        type:Sequelize.STRING,
+        allowNull:false
+    },
+    PatientLName:{
+        type:Sequelize.STRING,
+        allowNull:false
+    },
     Price:{
         type:Sequelize.INTEGER,
         allowNull:false

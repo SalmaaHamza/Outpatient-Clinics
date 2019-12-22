@@ -64,7 +64,7 @@ exports.post_signupD = (req,res)=>{
                     bcrypt.hash(newdoctor.Password, salt, (err, hash) => {
                         newdoctor.Password = hash;
                         newdoctor.save().then(savedUser => {
-                            res.redirect('/userD.handlebars');
+                            res.redirect('/doctor/'+newdoctor.DSSN);
 
                            
                         });
@@ -168,8 +168,7 @@ exports.post_signinD =  (req,res,next)=>{
        } else{
            bcrypt.compare(Password, user.Password).then((returnedPassword) => {
                if (returnedPassword){
-                res.sendFile(path.join(DirName,'views','home/userDoctor.html'));
-               // res.redirect('/patient/'+User.PSSN);
+                res.redirect('/doctor/'+user.DSSN);
                 
   
                }

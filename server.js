@@ -10,6 +10,7 @@ const Dates=require('./models/date')
 const Appointment=require('./models/appointment')
 const mainRoutes = require('./routes/main')
 const patientRoutes = require('./routes/patient')
+const doctorRoutes = require('./routes/doctor')
 const app = express()
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
@@ -26,17 +27,14 @@ app.use(express.static(DirName+'/public/'));
 // using the routes in the routes file 
 app.use(patientRoutes);
 app.use(mainRoutes);
+app.use(doctorRoutes);
+
 app.use(cookieParser());;
 app.use(session({secret:'123'}));
 app.use(flash());
 flash({ locals: 'flash' })
 
 
-// Defining the relations between tables  
-// Dates.belongsTo(Doctor ,{constraints:true, onDelete:'CASCADE' });
-// Doctor.hasMany(Dates);
-// Doctor.belongsToMany(Patient,{through: Appointment,uniqe:false})
-// Patient.belongsToMany(Doctor,{through: Appointment,uniqe:false})
 
 // synchronizing with database 
 sequelize.sync().then(res => { 
