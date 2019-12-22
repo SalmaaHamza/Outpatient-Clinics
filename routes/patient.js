@@ -11,7 +11,7 @@ router.get('/patient/Nuclear_Magnetic/:id',clinics.Nuclear_Magnetic);
 router.get('/patient/Opthalmology/:id',clinics.Opthalmology);
 router.get('/patient/Surgical/:id',clinics.Surgical);
 router.get('/patient/Traumatology/:id',clinics.Traumatology);
-router.post('/patient/Home/appointment',clinics.appoint);
+router.post('/appointment/:id',clinics.appoint);
 
 
 router.get('/patient/Home/:id',clinics.patientHome);

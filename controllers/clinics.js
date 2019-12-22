@@ -7,7 +7,6 @@ const appointment =require('../models/appointment');
 
 exports.Neurology= (req,res,next) => {
     const id= req.params.id;
-    console.log(id)
     doctor.findAll({where:{Dname:'Neurology'}}).then(result => {
         res.render('clinics',{doctors:result, hasDoctor:result.length>0,id:id ,layout:false});
     });
@@ -15,50 +14,60 @@ exports.Neurology= (req,res,next) => {
 }
 
 exports.Cardiology= (req,res,next) => {
+    const id= req.params.id;
     doctor.findAll({where:{Dname:'Cardiology'}}).then(result => {
-        res.render('clinics',{doctors:result, hasDoctor:result.length>0 ,layout:false});
+        res.render('clinics',{doctors:result, hasDoctor:result.length>0 ,id:id,layout:false});
     });
 }
 exports.Nuclear_Magnetic= (req,res,next) => {
+    const id= req.params.id;
     doctor.findAll({where:{Dname:'Nuclear_Magnetic'}}).then(result => {
-        res.render('clinics',{doctors:result, hasDoctor:result.length>0 ,layout:false});
+        res.render('clinics',{doctors:result, hasDoctor:result.length>0 ,id:id,layout:false});
     });
     
 }
 exports.Surgical= (req,res,next) => {
+    const id= req.params.id;
     doctor.findAll({where:{Dname:'Surgical'}}).then(result => {
-        res.render('clinics',{doctors:result, hasDoctor:result.lenght>0 ,layout:false});
+        res.render('clinics',{doctors:result, hasDoctor:result.lenght>0 ,id:id,layout:false});
     });
 }
 exports.Traumatology= (req,res,next) => {
+    const id= req.params.id;
     doctor.findAll({where:{Dname:'Traumatology'}}).then(result => {
-        res.render('clinics',{doctors:result, hasDoctor:result.length>0 ,layout:false});
+        res.render('clinics',{doctors:result, hasDoctor:result.length>0 ,id:id,layout:false});
     });
     
 }
 exports.Opthalmology= (req,res,next) => {
+    const id= req.params.id;
     doctor.findAll({where:{Dname:'Opthalmology'}}).then(result => {
-        console.log(result[0].Dates);
-        
-        res.render('clinics',{doctors:result, hasDoctor:result.length>0 ,layout:false});
+        res.render('clinics',{doctors:result, hasDoctor:result.length>0 ,id:id,layout:false});
     });
     
 }
 
 
 exports.appoint= (req,res,next) => {
-    let patientId=123548;
+    let patientId=req.params.id;
     let doctorId=req.body.doctorId;
-    let patientData=null;
-    let doctorData=null;
+    
+    
+    // console.log("here",doctorId,patientId)
     patient.findOne({where:{PSSN:patientId}})
-    .then(patient => console.log(patient))
-    .catch(err => console.log("apoint",err));
-    doctor.findOne({where:{DSSN:doctorId}})
-    .then(doctor => console.log(doctor))
-    .catch(err => console.log("apoint",err));
+    .then(P => {
+    
+        return doctor.findOne({where:{DSSN:doctorId}})
+        .then(D => {
+            return P.addDoctor(D,{through:{Date:null}})
+        })     
+    })
+    .then(result => console.log(result))
+    .catch(err => console.log(err));
+
+
     // doctorData.addPatient(patientData,{through:{Date:null}}).then().catch( err => console.log("apoint",err));
-// console.log(patientData,doctorData);
+// console.log(patientData.PSSN,doctorData.DSSN);
 res.end();
 
 }

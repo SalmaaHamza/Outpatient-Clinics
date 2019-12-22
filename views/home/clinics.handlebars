@@ -128,11 +128,11 @@
                                             
                                             <h3 style="color:#6cccc9;">{{ this.FName }} {{ this.LName}}</h3>
                                             <p>{{ this.Description }}</p>
-                                            <form method="POST" action="/patient/Home/appointment">
-                                            <input type="hidden" name= "doctorId" value="{{ this.DSSN }}"> 
-                                            <input type="hidden" name= "patientId" value="{{ this.DSSN }}"> 
+                                            {{!-- <form method="POST" action="/patient/Home/appointment"></form>
+                                            <input type="hidden" name= "doctorId" value={{ this.DSSN }}> 
+                                            <input type="hidden" name= "patientId" value={{ id }}> 
                                             <button type="submit"> Make appointment </button>
-                                            </form>
+                                            </form> --}}
                                         </div>
                                     </div>  
                                 </div>
@@ -172,35 +172,42 @@
           </div>
           <hr/>
           <div class="modal-body">
-            <form action="#">
+            <form method="POST" action="/appointment/{{ id }}">
               <div class="form-group">
-                <label for="appointment_name" class="text-black">Doctor Name</label>
-                <input type="text" class="form-control" id="appointment_name">
+                 <label for="appointment_name" class="text-black">Doctor Name</label>
+                  <select name="doctorId">
+                      {{#each doctors }}
+                        <option value= {{ this.DSSN}} > {{ this.FName}} {{ this.LName}} </option>
+                      {{/each}}
+                  </select>
+ 
+                {{!-- <input type="text" class="form-control" id="appointment_name">  --}}
+
               </div>
-              <div class="form-group">
+              {{!-- <div class="form-group">
                 <label for="appointment_email" class="text-black">Clinic</label>
                 <input type="text" class="form-control" id="appointment_email">
-              </div>
+              </div> --}}
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="appointment_date" class="text-black">Date</label>
-                    <input type="text" class="form-control" id="appointment_date">
+                    <input type="date" class="form-control" id="appointment_date">
                   </div>    
                 </div>
-                <div class="col-md-6">
+                {{!-- <div class="col-md-6">
                   <div class="form-group">
                     <label for="appointment_time" class="text-black">Time</label>
-                    <input type="text" class="form-control" id="appointment_time">
+                    <input type="te" class="form-control" id="appointment_time">
                   </div>
-                </div>
+                </div> --}}
               </div>
               
 
-              <div class="form-group">
+              {{!-- <div class="form-group">
                 <label for="appointment_message" class="text-black">Your counsaltance</label>
                 <textarea name="" id="appointment_message" class="form-control" cols="30" rows="10"></textarea>
-              </div>
+              </div> --}}
               <div class="form-group">
                 <input type="submit" value="Reserve the appointment" class="btn btn-primary">
               </div>
