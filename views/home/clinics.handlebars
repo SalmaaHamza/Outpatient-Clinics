@@ -83,23 +83,25 @@
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-md-9 text-center">
-                              <header role="banner">
-                                <div class="top-bar" style="color: white;">
+                              <header role="banner" style="text-align: center;">
+                                <div class="top-bar" style="text-align: center;">
                                       <div class="container">
                                         <div class="row">
                                             <div class="col-md-1 col-sm-1 col-0">
                                                 <ul class="social list-unstyled">
-                                                </ul>
+                                                    <li><a href="#"><span></span></a></li>
+                                                   </ul>
                                               </div>
                                           
-                                          <div class="col-md-6 col-sm-6 col-7 text-right" style="color: white;" >
-                                            <p class="mb-0">
-                                              <a href="#" class="cta-btn" data-toggle="modal" data-target="#modalAppointment">Make an Appointment</a></p>
+                                          <div class="col-md-6 col-sm-6 col-7 text-center" >
+                                            
                                           </div>
                                         </div>
                                       </div>
                                   </div>
-                                <h1 style="color: black;"><p>The best are selected to give you the care you need</p></h1>
+                                   <p class="mb-0">
+                                              <a href="#" class="cta-btn" data-toggle="modal" data-target="#modalAppointment" style="  display: inline-block; font-size: 30px; padding-right: 30px; padding-left: 30px; background: #5AC8D8; color: black">Make an Appointment</a></p>
+                                <h3 style="color: black;">The best are selected to give you the care you need</h3>
                                 
                             </div>
                         </div>
@@ -124,7 +126,7 @@
                                                 <span class="flaticon-stethoscope"></span>
                                             </div>
                                         
-                                            <img src="../../images/{{ this.img }}" alt="Avatar">
+                                            <img src="../../images/{{ this.img }}" alt="Avatar" class="avatar">
                                             
                                             <h3 style="color:#6cccc9;">{{ this.FName }} {{ this.LName}}</h3>
                                             <p>{{ this.Description }}</p>
@@ -138,7 +140,7 @@
                                 </div>
                             {{/each }}    
                 {{ else }}
-                   <h1>Sorry...No Doctors </h1> 
+                    <pre class="tab"><h1>Sorry...No Doctors!! </h1></pre> 
                 {{/if  }}
 
 
