@@ -118,53 +118,31 @@
        <div class="col-md-4 d-flex">
                     <div class="img img-dept align-self-stretch" style="background-image: url(../../images/dept-1.jpg);"></div>
                 </div>
-
-                <div class="container">
-                    <div class="row no-gutters">
-                        <div class="col-sm">
-                            <div class="department-wrap p-4 ftco-animate">
-                                <div class="text p-2 text-center">
-                                    <div class="icon">
-                                        <span class="flaticon-stethoscope"></span>
-                                    </div>
-                                 
-                                    <img src="../../images/doc-2.jpg" alt="Avatar">
-                                	
-                                    <h3 style="color:#6cccc9;">Doc./</h3>
-                                    <p>Biography</p>
+                {{#if hasDoctor }}
+                    <div class="container">
+                        <div class="row no-gutters">
+                            {{#each doctors  }}
+                                <div class="col-sm">
+                                    <div class="department-wrap p-4 ftco-animate">
+                                        <div class="text p-2 text-center">
+                                            <div class="icon">
+                                                <span class="flaticon-stethoscope"></span>
+                                            </div>
+                                        
+                                            <img src="../../images/{{ this.img }}" alt="Avatar">
+                                            
+                                            <h3 style="color:#6cccc9;">{{ this.FName }} {{ this.LName}}</h3>
+                                            <p>{{ this.Description }}</p>
+                                        </div>
+                                    </div>  
                                 </div>
-                            </div>
-                        </div>
+                            {{/each }}    
+                {{ else }}
+                   <h1>Sorry...No Doctors </h1> 
+                {{/if  }}
 
-                        <div class="col-sm">
-                            <div class="department-wrap p-4 ftco-animate">
-                                <div class="text p-2 text-center">
-                                    <div class="icon">
-                                        <span class="flaticon-stethoscope"></span>
-                                    </div>
-                                    
-                                    <img src="../../images/doc-3.jpg" alt="Avatar">
-                                	
-                                    <h3 style="color:#6cccc9;">Doc./</h3>
-                                    <p>Biography2</p>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-sm">
-                            <div class="department-wrap p-4 ftco-animate">
-                                <div class="text p-2 text-center">
-                                    <div class="icon">
-                                        <span class="flaticon-stethoscope"></span>
-                                    </div>
-                                    
-                                    <img src="../../images/doc-4.jpg" alt="Avatar">
-                                	
-                                    <h3 style="color:#6cccc9;">Doc./</h3>
-                                    <p>Biography3</p>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
