@@ -40,7 +40,7 @@ exports.signinD=(req,res,next)=>{
 // exports.
 
 exports.post_signupD = (req,res)=>{
-   
+   console.log("signUpDoctor");
     const newdoctor = new doctor({
         DSSN : req.body.DSSN,
         Email : req.body.Email,
@@ -48,9 +48,12 @@ exports.post_signupD = (req,res)=>{
         FName : req.body.FName,
         LName : req.body.LName,
         Phone: req.body.Phone,
+        Dname:req.body.Dname,
         //Username: req.body.Username,
         //Address: req.body.Address
-        Dname : req.body.Dname
+        Description:req.body.Description,
+        img:req.body.img
+
     });
 
 //console.log(newpatient)
@@ -148,7 +151,7 @@ exports.post_signinP = (req,res,next)=>{
        User=user;
         if(!user){
 
-            res.sendFile(path.join(DirName,'views','errors/signinwrongemail.html'));
+            res.sendFile(path.join(DirName,'views','errors/signuperror.html'));
             console.log('email not found')
        } else{
            bcrypt.compare(Password, user.Password).then((returnedPassword) => {
@@ -174,7 +177,8 @@ exports.post_signinD =  (req,res,next)=>{
     //    console.log(user)
         if(!user){
             
-           console.log('email not found')
+           console.log('email not found');
+           res.redirect('/signinD');
        } else{
            bcrypt.compare(Password, user.Password).then((returnedPassword) => {
                if (returnedPassword){

@@ -18,9 +18,8 @@ router.post('/signin',controller.post_signinP)
 router.post('/signinD',controller.post_signinD)
 router.post('/signup',controller.post_signup)
 router.get('/logout',controller.post_signout)
-router.get('/',controller.mainroute);
 router.post('/signupD',controller.post_signupD)
-
+router.get('/',controller.mainroute);
 
 module.exports=router;
 

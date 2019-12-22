@@ -51,7 +51,7 @@ exports.Opthalmology= (req,res,next) => {
 exports.appoint= (req,res,next) => {
     let patientId=req.params.id;
     let doctorId=req.body.doctorId;
-    
+    console.log(patientId,doctorId);
     
     // console.log("here",doctorId,patientId)
     patient.findOne({where:{PSSN:patientId}})

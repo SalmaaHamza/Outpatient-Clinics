@@ -6,6 +6,10 @@ const Appointment= sequelize.define('Appointments',{
     Date: {
     type:Sequelize.DATE,
     allowNull:true,
+    },
+    Description:{
+        type:Sequelize.TEXT,
+        allowNull:true
     }
 })
 
