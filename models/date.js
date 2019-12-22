@@ -4,13 +4,22 @@ const sequelize=require('../util/db.js');
 
 const Dates= sequelize.define('Dates',{
     Date: {
-    type:Sequelize.DATE,
+    type:Sequelize.STRING,
     allowNull:false,
     },
     Price:{
     type:Sequelize.INTEGER,
-    allowNull:false,
+    allowNull:true,
+    },
+    Dname:{
+        type:Sequelize.STRING,
+        allowNull:false
+    },
+    Time:{
+        type:Sequelize.TIME,
+        allowNull:true
     }
+
 
 })
 

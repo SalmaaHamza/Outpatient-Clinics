@@ -1,9 +1,23 @@
 
 const express = require('express');
 const clinics = require('../controllers/clinics');
+const date=require('../models/date');
 const router = express.Router();
 
-
+//for  testing only 
+router.get('/dates', (req,res) => {res.render('testingOnly',{layout:false}) })
+router.post('/dates',(req,res) => {
+    const newDate=new date(
+        {
+            Date:req.body.date,
+            Price:req.body.Price,
+            Time:req.body.Time,
+            Dname:req.body.Dname
+        }
+    )
+newDate.save().then(res.redirect('/dates'));
+})
+//
 router.post('/edit/:id',clinics.editData);
 router.get('/patient/Neurology/:id',clinics.Neurology);
 router.get('/patient/Cardiology/:id',clinics.Cardiology);

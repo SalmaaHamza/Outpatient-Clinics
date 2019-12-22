@@ -4,7 +4,7 @@ const sequelize=require('../util/db.js');
 
 const Appointment= sequelize.define('Appointments',{
     Date: {
-    type:Sequelize.DATE,
+    type:Sequelize.STRING,
     allowNull:true,
     },
     Description:{

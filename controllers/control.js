@@ -79,7 +79,7 @@ exports.post_signupD = (req,res)=>{
                     bcrypt.hash(newdoctor.Password, salt, (err, hash) => {
                         newdoctor.Password = hash;
                         newdoctor.save().then(savedUser => {
-                            res.sendFile(path.join(DirName,'views','home/userDoctor.html'));
+                            res.redirect('/');
 
                             //res.redirect('/patient/'+newpatient.PSSN); 
                         });

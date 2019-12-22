@@ -190,21 +190,21 @@
                 <label for="appointment_email" class="text-black">Clinic</label>
                 <input type="text" class="form-control" id="appointment_email">
               </div> --}}
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="appointment_date" class="text-black">Date</label>
-                    <input type="date" class="form-control" id="appointment_date">
-                  </div>    
-                </div>
-                {{!-- <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="appointment_time" class="text-black">Time</label>
-                    <input type="te" class="form-control" id="appointment_time">
+              {{#if hasDates }}
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="appointment_date" class="text-black">Date</label>
+                      {{!-- <input type="date" class="form-control" id="appointment_date"> --}}
+                      <select name="date">
+                        {{#each dates }}
+                        <option value="{{ this.Date }}-{{ this.Time}}"> {{ this.Date}}-{{ this.Time}}-{{  this.Price}} EGP</option>
+                        {{/each}}
+                      </select>
+                    </div>    
                   </div>
-                </div> --}}
-              </div>
-              
+                </div>
+              {{/if}}
 
               {{!-- <div class="form-group">
                 <label for="appointment_message" class="text-black">Your counsaltance</label>

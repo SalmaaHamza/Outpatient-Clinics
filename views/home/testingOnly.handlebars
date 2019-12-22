@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            testing
+        </title>
+    </head>
+    <body>
+        <form method="POST" action="/dates" >
+            <select name="date" required >
+                <option value="Sunday" >Sunday</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+            </select>
+            <input name="Time" type="time" placeholder="time" required>
+            <select type="text" name="Dname" placeholder="Department name" required >
+             <option value="Neurology" > Neurology </option>
+             <option value="Cardiology" > Cardiology </option>
+             <option value="Nuclear_Magnetic" >Nuclear_Magnetic</option>
+             <option value="Opthalmology" >Opthalmology</option>
+             <option value="Surgical" >Surgical</option>
+             <option value="Traumatology" >Traumatology</option> 
+            </select>
+            <input name="Price" type="text" placeholder="price" required>
+            <input type="submit">
+        </form>
+    </body>
+</html>

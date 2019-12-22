@@ -33,8 +33,8 @@ flash({ locals: 'flash' })
 
 
 // Defining the relations between tables  
-Dates.belongsTo(Doctor ,{constraints:true, onDelete:'CASCADE' });
-Doctor.hasMany(Dates);
+// Dates.belongsTo(Doctor ,{constraints:true, onDelete:'CASCADE' });
+// Doctor.hasMany(Dates);
 Doctor.belongsToMany(Patient,{through: Appointment})
 Patient.belongsToMany(Doctor,{through: Appointment})
 
