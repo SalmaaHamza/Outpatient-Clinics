@@ -4,7 +4,7 @@ const clinics = require('../controllers/clinics');
 const router = express.Router();
 
 
-router.post('/edit/:id',() => {console.log("hereeeeeee")});
+router.post('/edit/:id',clinics.editData);
 router.get('/patient/Home/Neurology',clinics.Neurology);
 router.get('/patient/Home/Cardiology',clinics.Cardiology);
 router.get('/patient/Home/Nuclear_Magnetic',clinics.Nuclear_Magnetic);

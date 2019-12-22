@@ -21,7 +21,7 @@ const Patient= sequelize.define('Patient',{
     allowNull:true,
     },
     Phone:{
-    type:Sequelize.INTEGER,
+    type:Sequelize.BIGINT(20),
     allowNull:false,
     },
     Age:{
