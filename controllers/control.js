@@ -110,14 +110,7 @@ exports.post_signup = (req,res)=>{
     });
     
     if (req.body.Password !== req.body.ConfirmPassword) {
-        // req.flash('not_matched_passwords',"passwords don't match");
-        // //   console.log("passwords don't match");
-        //    res.render('/signup',{
-        //        not_matched_passwords : req.flash('not_matched_passwords'),
-        //        FName: req.body.FName,
-        //        LName : req.body.LName,
-        //        Email : req.body.Email,
-        //    });
+        
         res.sendFile(path.join(DirName,'views','home/signuperror.html'));
 
     }
@@ -155,7 +148,7 @@ exports.post_signinP = (req,res,next)=>{
        User=user;
         if(!user){
 
-            res.sendFile(path.join(DirName,'views','home/signinerror.html'));
+            res.sendFile(path.join(DirName,'views','errors/sigininwrongemail.html'));
             console.log('email not found')
        } else{
            bcrypt.compare(Password, user.Password).then((returnedPassword) => {
@@ -166,7 +159,7 @@ exports.post_signinP = (req,res,next)=>{
                }
                else{
 
-                res.sendFile(path.join(DirName,'views','home/signinerror.html'));
+                res.sendFile(path.join(DirName,'views','errors/signinwrongpass.html'));
                }
            });
        }
@@ -203,4 +196,5 @@ exports.post_signout = (req,res,next)=>{
     // res.sendFile(path.join(DirName,'views','home/index.html'));
     res.redirect('/');
 }
+
 

@@ -40,7 +40,7 @@ Patient.belongsToMany(Doctor,{through: Appointment})
 
 // synchronizing with database 
 sequelize.sync().then(res => { 
-  app.listen(5000,() => {
+  app.listen(3000,() => {
     console.log('Running')
    })
   
