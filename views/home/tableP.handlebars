@@ -90,56 +90,27 @@
                                 <div class="card-body table-full-width table-responsive">
                                     <table class="table table-hover table-striped">
                                         <thead>
-                                            <th style="font-weight:bold">DSSN</th>
-                                            <th style="font-weight:bold">DNAme</th>
-                                            <th style="font-weight:bold">Department</th>
-                                            <th style="font-weight:bold">Price</th>
+                                            <th style="font-weight:bold">Doctor First name</th>
+                                            <th style="font-weight:bold">Doctor First name</th>
                                             <th style="font-weight:bold">Date</th>
+                                            <th style="font-weight:bold">Time</th>
+                                            <th style="font-weight:bold">Price</th>
+                                            <th style="font-weight:bold">Description</th>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Dakota Rice</td>
-                                                <td>Dental</td>
-                                                <td>$35</td>
-                                                <td>27/6</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Minerva Hooper</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Sage Rodriguez</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Philip Chaney</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Doris Greene</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>Mason Porter</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                        </tbody>
+                                        {{#if hasAppoint }}
+                                            <tbody>
+                                                {{#each appoints}}
+                                                    <tr>
+                                                        <td>{{this.dataValues.DoctorFName }}</td>
+                                                        <td>{{this.dataValues.DoctorLName}}</td>
+                                                        <td>{{this.dataValues.Date}}</td>
+                                                        <td>{{this.dataValues.Time}}</td>
+                                                        <td>{{this.dataValues.Price}}</td>
+                                                        <td>{{this.dataValues.Description}}</td>
+                                                    </tr>
+                                                {{/each }}    
+                                            </tbody>
+                                        {{/if}}
                                     </table>
                                 </div>
                             </div>

@@ -35,8 +35,8 @@ flash({ locals: 'flash' })
 // Defining the relations between tables  
 // Dates.belongsTo(Doctor ,{constraints:true, onDelete:'CASCADE' });
 // Doctor.hasMany(Dates);
-Doctor.belongsToMany(Patient,{through: Appointment})
-Patient.belongsToMany(Doctor,{through: Appointment})
+// Doctor.belongsToMany(Patient,{through: Appointment,uniqe:false})
+// Patient.belongsToMany(Doctor,{through: Appointment,uniqe:false})
 
 // synchronizing with database 
 sequelize.sync().then(res => { 

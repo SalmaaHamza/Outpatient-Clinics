@@ -76,8 +76,9 @@ exports.Opthalmology= (req,res,next) => {
 exports.appoint= (req,res,next) => {
     let patientId=req.params.id;
     let doctorId=req.body.doctorId;
-    let date=req.body.date
-    console.log(patientId,doctorId);
+    let date=req.body.date;
+    let description=req.body.Description;
+    console.log("description",description);
     
     // console.log("here",doctorId,patientId)
     patient.findOne({where:{PSSN:patientId}})
@@ -85,7 +86,8 @@ exports.appoint= (req,res,next) => {
     
         return doctor.findOne({where:{DSSN:doctorId}})
         .then(D => {
-            return P.addDoctor(D,{through:{Date:date}})
+           return appointment.create({PSSN:P.PSSN,DSSN:D.DSSN,Price:date.split('-')[2],Description:description,Date:date.split('-')[0],Time:date.split('-')[1],Price:date.split('-')[2],DoctorFName:D.FName,DoctorLName:D.LName})
+            // return D.addPatient(P,{through:{Description:description, Date:date.split('-')[0],Time:date.split('-')[1],Price:date.split('-')[2],DoctorFName:D.FName,DoctorLName:D.LName}})
         })     
     })
     .then(res.redirect('/patient/Home/'+patientId))
@@ -115,8 +117,13 @@ res.render('dashboard',{id:Id,layout:false});
 
 exports.patientTable=(req,res,next) => {
     const Id = req.params.id;
-    res.render('tableP',{id:Id,layout:false});
-  
+    appointment.findAll({where:{ PSSN:Id}})
+    .then(appoints => {
+            console.log(appoints)
+        res.render('tableP',{id:Id, appoints:appoints ,hasAppoint:appoints.length>0,layout:false})
+    })
+
+      
 }
 
 exports.patientEdit=(req,res,next) => {
