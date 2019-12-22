@@ -11,7 +11,9 @@ const Appointment=require('./models/appointment')
 const mainRoutes = require('./routes/main')
 const patientRoutes = require('./routes/patient')
 const app = express()
-
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+const flash = require('req-flash');
 app.engine('handlebars', exphbs({layout: false}));
 app.set('view engine', 'handlebars');
 app.set('views','views/home');
@@ -24,8 +26,10 @@ app.use(express.static(DirName+'/public/'));
 // using the routes in the routes file 
 app.use(patientRoutes);
 app.use(mainRoutes);
-
-
+app.use(cookieParser());;
+app.use(session({secret:'123'}));
+app.use(flash());
+flash({ locals: 'flash' })
 
 
 // Defining the relations between tables  
@@ -35,8 +39,8 @@ Doctor.belongsToMany(Patient,{through: Appointment})
 Patient.belongsToMany(Doctor,{through: Appointment})
 
 // synchronizing with database 
-sequelize.sync({force:true}).then(res => { 
-  app.listen(3000,() => {
+sequelize.sync().then(res => { 
+  app.listen(5000,() => {
     console.log('Running')
    })
   

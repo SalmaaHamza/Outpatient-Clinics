@@ -3,6 +3,7 @@ const DirName=require('../util/path');
 const bcrypt = require('bcryptjs')
 const patient = require('../models/patient')
 const doctor = require('../models/doctor')
+const flash = require('req-flash')
 // the main route which render the main html page
 
 exports.mainroute=(req,res,next) => {
@@ -39,6 +40,7 @@ exports.signinD=(req,res,next)=>{
 // exports.
 
 exports.post_signupD = (req,res)=>{
+   
     const newdoctor = new doctor({
         DSSN : req.body.DSSN,
         Email : req.body.Email,
@@ -55,14 +57,14 @@ exports.post_signupD = (req,res)=>{
 
     
     if (req.body.Password !== req.body.ConfirmPassword) {
-        //  req.flash('not_matched_passwords',"passwords don't match");
-        console.log("passwords don't match");
-        // res.render('home/registration',{
-        //     //not_matched_passwords : req.flash('not_matched_passwords'),
-        //     firstName : req.body.firstName,
-        //     lastName : req.body.lastName,
-        //     email : req.body.email,
-        // });
+    //   req.flash('not_matched_passwords',"passwords don't match");
+    //  //   console.log("passwords don't match");
+    //     res.render('home/registration',{
+    //         //not_matched_passwords : req.flash('not_matched_passwords'),
+    //         FName: req.body.FName,
+    //         LName : req.body.LName,
+    //         Email : req.body.Email,
+    //     });
         res.send("password dont match").status(200);
     }else {
         
@@ -93,6 +95,7 @@ exports.post_signupD = (req,res)=>{
 }
 
 exports.post_signup = (req,res)=>{
+    
     const newpatient = new patient({
         PSSN : req.body.PSSN,
         Email : req.body.Email,
@@ -105,23 +108,21 @@ exports.post_signup = (req,res)=>{
         Username: req.body.Username,
         Address: req.body.Address
     });
-
-console.log(newpatient)
-
     
     if (req.body.Password !== req.body.ConfirmPassword) {
-        //  req.flash('not_matched_passwords',"passwords don't match");
-        console.log("passwords don't match");
-        // res.render('home/registration',{
-        //     //not_matched_passwords : req.flash('not_matched_passwords'),
-        //     firstName : req.body.firstName,
-        //     lastName : req.body.lastName,
-        //     email : req.body.email,
-        // });
-        res.send("password dont match").status(200);
-    }else {
-        
+        // req.flash('not_matched_passwords',"passwords don't match");
+        // //   console.log("passwords don't match");
+        //    res.render('/signup',{
+        //        not_matched_passwords : req.flash('not_matched_passwords'),
+        //        FName: req.body.FName,
+        //        LName : req.body.LName,
+        //        Email : req.body.Email,
+        //    });
+        res.sendFile(path.join(DirName,'views','home/signuperror.html'));
 
+    }
+        
+else{
         patient.findOne({where:{Email: newpatient.Email}}).then(user => {
             console.log(user)
             if (!user) {
@@ -129,17 +130,16 @@ console.log(newpatient)
                     bcrypt.hash(newpatient.Password, salt, (err, hash) => {
                         newpatient.Password = hash;
                         newpatient.save().then(savedUser => {
-                            res.sendFile(path.join(DirName,'views','home/user.handlebars'));
-                            // res.redirect('/patient/'+newpatient.PSSN); 
+                            //res.sendFile(path.join(DirName,'views','home/user.handlebars'));
+                             res.redirect('/patient/'+newpatient.PSSN); 
                         });
-                        console.log(hash);
+                       
                     });
                 });
             } else {
-                // req.flash('already_user','The E-mail exists,please login');
-                console.log('The E-mail exists,please login');
+               
                 
-                res.send("please login").status(200);
+                 res.sendFile(path.join(DirName,'views','home/signin.html'));
             }
         });
 
@@ -154,7 +154,9 @@ exports.post_signinP = (req,res,next)=>{
     patient.findOne({where:{Email:Email}}).then(user=>{
        User=user;
         if(!user){
-           console.log('email not found')
+
+            res.sendFile(path.join(DirName,'views','home/signinerror.html'));
+            console.log('email not found')
        } else{
            bcrypt.compare(Password, user.Password).then((returnedPassword) => {
                if (returnedPassword){
@@ -163,8 +165,8 @@ exports.post_signinP = (req,res,next)=>{
   
                }
                else{
-                   console.log('the password is not correct');
-                   res.send('the password is not correct').status(200)
+
+                res.sendFile(path.join(DirName,'views','home/signinerror.html'));
                }
            });
        }
@@ -178,6 +180,7 @@ exports.post_signinD =  (req,res,next)=>{
     doctor.findOne({where:{Email:Email}}).then(user => {
     //    console.log(user)
         if(!user){
+            
            console.log('email not found')
        } else{
            bcrypt.compare(Password, user.Password).then((returnedPassword) => {
