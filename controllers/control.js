@@ -56,45 +56,30 @@ exports.post_signupD = (req,res)=>{
 
     });
 
-//console.log(newpatient)
-
-    
-    if (req.body.Password !== req.body.ConfirmPassword) {
-    //   req.flash('not_matched_passwords',"passwords don't match");
-    //  //   console.log("passwords don't match");
-    //     res.render('home/registration',{
-    //         //not_matched_passwords : req.flash('not_matched_passwords'),
-    //         FName: req.body.FName,
-    //         LName : req.body.LName,
-    //         Email : req.body.Email,
-    //     });
-        res.send("password dont match").status(200);
-    }else {
-        
 
         doctor.findOne({where:{Email: newdoctor.Email}}).then(user => {
-            // console.log(user)
+           
             if (!user) {
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(newdoctor.Password, salt, (err, hash) => {
                         newdoctor.Password = hash;
                         newdoctor.save().then(savedUser => {
-                            res.redirect('/');
+                            res.redirect('/userD.handlebars');
 
-                            //res.redirect('/patient/'+newpatient.PSSN); 
+                           
                         });
                         console.log(hash);
                     });
                 });
             } else {
-                // req.flash('already_user','The E-mail exists,please login');
+                // req.flash('already_user','The E-mail exists,please login')
                 console.log('The E-mail exists,please login');
                 
                 res.send("please login").status(200);
             }
         });
 
-    }
+    
 }
 
 exports.post_signup = (req,res)=>{
@@ -151,7 +136,7 @@ exports.post_signinP = (req,res,next)=>{
        User=user;
         if(!user){
 
-            res.sendFile(path.join(DirName,'views','errors/signuperror.html'));
+            res.sendFile(path.join(DirName,'views','errors/signinwrongemail.html'));
             console.log('email not found')
        } else{
            bcrypt.compare(Password, user.Password).then((returnedPassword) => {
@@ -177,8 +162,9 @@ exports.post_signinD =  (req,res,next)=>{
     //    console.log(user)
         if(!user){
             
-           console.log('email not found');
-           res.redirect('/signinD');
+           
+            res.sendFile(path.join(DirName,'views','errors/signinemailerrorD.html'));
+           
        } else{
            bcrypt.compare(Password, user.Password).then((returnedPassword) => {
                if (returnedPassword){
@@ -188,8 +174,8 @@ exports.post_signinD =  (req,res,next)=>{
   
                }
                else{
-                   console.log('the password is not correct');
-                   res.send('the password is not correct').status(200)
+                res.sendFile(path.join(DirName,'views','home/siginwrongpassD.html'));
+                  
                }
            });
        }

@@ -20,6 +20,6 @@ router.post('/signup',controller.post_signup)
 router.get('/logout',controller.post_signout)
 router.post('/signupD',controller.post_signupD)
 router.get('/',controller.mainroute);
-
+router.get('/signupD',controller.post_signupD)
 module.exports=router;
 
