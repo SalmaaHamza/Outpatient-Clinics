@@ -1,27 +1,43 @@
 const path = require('path');
 const patient = require('../models/patient')
 const DirName=require('../util/path');
-
+const doctor =require('../models/doctor');
 
 
 exports.Neurology= (req,res,next) => {
-    res.sendFile(path.join(DirName,'views','home/Neurology.html'));
+    doctor.findAll({where:{Dname:'Neurology'}}).then(result => {
+        res.render('clinics',{doctors:result, hasDoctor:result.length>0 ,layout:false});
+    });
+    
 }
 
 exports.Cardiology= (req,res,next) => {
-    res.sendFile(path.join(DirName,'views','home/Cardiology.html'));
+    doctor.findAll({where:{Dname:'Cardiology'}}).then(result => {
+        res.render('clinics',{doctors:result, hasDoctor:result.length>0 ,layout:false});
+    });
 }
 exports.Nuclear_Magnetic= (req,res,next) => {
-    res.sendFile(path.join(DirName,'views','home/Nuclear_Magnetic.html'));
+    doctor.findAll({where:{Dname:'Nuclear_Magnetic'}}).then(result => {
+        res.render('clinics',{doctors:result, hasDoctor:result.length>0 ,layout:false});
+    });
+    
 }
 exports.Surgical= (req,res,next) => {
-    res.sendFile(path.join(DirName,'views','home/Surgical.html'));
+    doctor.findAll({where:{Dname:'Surgical'}}).then(result => {
+        res.render('clinics',{doctors:result, hasDoctor:result.lenght>0 ,layout:false});
+    });
 }
 exports.Traumatology= (req,res,next) => {
-    res.sendFile(path.join(DirName,'views','home/Traumatology.html'));
+    doctor.findAll({where:{Dname:'Traumatology'}}).then(result => {
+        res.render('clinics',{doctors:result, hasDoctor:result.length>0 ,layout:false});
+    });
+    
 }
 exports.Opthalmology= (req,res,next) => {
-    res.sendFile(path.join(DirName,'views','home/Opthalmology.html'));
+    doctor.findAll({where:{Dname:'Opthalmology'}}).then(result => {
+        res.render('clinics',{doctors:result, hasDoctor:result.length>0 ,layout:false});
+    });
+    
 }
 
 

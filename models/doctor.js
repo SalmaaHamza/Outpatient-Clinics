@@ -31,7 +31,17 @@ const Doctor= sequelize.define('Doctor',{
     Dname:{
     type:Sequelize.STRING,
     allowNull:false,
+    },
+    Description:{
+        type:Sequelize.TEXT,
+        allowNull:true
+    },
+    img:{
+        type:Sequelize.STRING,
+        allowNull:true
     }
+
+
 
 })
 
