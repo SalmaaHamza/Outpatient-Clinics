@@ -111,13 +111,13 @@ exports.post_signup = (req,res)=>{
     
     if (req.body.Password !== req.body.ConfirmPassword) {
         
-        res.sendFile(path.join(DirName,'views','home/signuperror.html'));
+        res.sendFile(path.join(DirName,'views','errors/signupwrongpass.html'));
 
     }
         
 else{
         patient.findOne({where:{Email: newpatient.Email}}).then(user => {
-            console.log(user)
+           
             if (!user) {
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(newpatient.Password, salt, (err, hash) => {
@@ -132,7 +132,7 @@ else{
             } else {
                
                 
-                 res.sendFile(path.join(DirName,'views','home/signin.html'));
+                 res.sendFile(path.join(DirName,'views','errors/signupexistingemail.html'));
             }
         });
 
@@ -148,7 +148,7 @@ exports.post_signinP = (req,res,next)=>{
        User=user;
         if(!user){
 
-            res.sendFile(path.join(DirName,'views','errors/sigininwrongemail.html'));
+            res.sendFile(path.join(DirName,'views','errors/signinwrongemail.html'));
             console.log('email not found')
        } else{
            bcrypt.compare(Password, user.Password).then((returnedPassword) => {
