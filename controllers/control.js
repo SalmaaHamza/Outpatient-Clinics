@@ -28,7 +28,65 @@ exports.userDoctor=(req,res,next)=>{
     res.sendFile(path.join(DirName,'views','home/userDoctor.hbs'));
 }
 
+exports.signupD=(req,res,next)=>{
+    res.sendFile(path.join(DirName,'views','home/signup_doctor.html'));
+}
+
 // exports.
+
+exports.post_signupD = (req,res)=>{
+    const newdoctor = new doctor({
+        DSSN : req.body.DSSN,
+        Email : req.body.Email,
+        Password : req.body.Password,
+        FName : req.body.FName,
+        LName : req.body.LName,
+        Phone: req.body.Phone,
+        //Username: req.body.Username,
+        //Address: req.body.Address
+        Dname : req.body.Dname
+    });
+
+//console.log(newpatient)
+
+    
+    if (req.body.Password !== req.body.ConfirmPassword) {
+        //  req.flash('not_matched_passwords',"passwords don't match");
+        console.log("passwords don't match");
+        // res.render('home/registration',{
+        //     //not_matched_passwords : req.flash('not_matched_passwords'),
+        //     firstName : req.body.firstName,
+        //     lastName : req.body.lastName,
+        //     email : req.body.email,
+        // });
+        res.send("password dont match").status(200);
+    }else {
+        
+
+        doctor.findOne({where:{Email: newdoctor.Email}}).then(user => {
+            // console.log(user)
+            if (!user) {
+                bcrypt.genSalt(10, (err, salt) => {
+                    bcrypt.hash(newdoctor.Password, salt, (err, hash) => {
+                        newdoctor.Password = hash;
+                        newdoctor.save().then(savedUser => {
+                            res.sendFile(path.join(DirName,'views','home/user.html'));
+
+                            //res.redirect('/patient/'+newpatient.PSSN); 
+                        });
+                        console.log(hash);
+                    });
+                });
+            } else {
+                // req.flash('already_user','The E-mail exists,please login');
+                console.log('The E-mail exists,please login');
+                
+                res.send("please login").status(200);
+            }
+        });
+
+    }
+}
 
 exports.post_signup = (req,res)=>{
     const newpatient = new patient({
