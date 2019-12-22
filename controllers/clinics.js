@@ -2,6 +2,7 @@ const path = require('path');
 const patient = require('../models/patient')
 const DirName=require('../util/path');
 const doctor =require('../models/doctor');
+const appointment =require('../models/appointment');
 
 
 exports.Neurology= (req,res,next) => {
@@ -35,6 +36,8 @@ exports.Traumatology= (req,res,next) => {
 }
 exports.Opthalmology= (req,res,next) => {
     doctor.findAll({where:{Dname:'Opthalmology'}}).then(result => {
+        console.log(result[0].Dates);
+        
         res.render('clinics',{doctors:result, hasDoctor:result.length>0 ,layout:false});
     });
     
@@ -42,7 +45,20 @@ exports.Opthalmology= (req,res,next) => {
 
 
 exports.appoint= (req,res,next) => {
-    res.end()
+    let patientId=123548;
+    let doctorId=req.body.doctorId;
+    let patientData=null;
+    let doctorData=null;
+    patient.findOne({where:{PSSN:patientId}})
+    .then(patient => console.log(patient))
+    .catch(err => console.log("apoint",err));
+    doctor.findOne({where:{DSSN:doctorId}})
+    .then(doctor => console.log(doctor))
+    .catch(err => console.log("apoint",err));
+    // doctorData.addPatient(patientData,{through:{Date:null}}).then().catch( err => console.log("apoint",err));
+// console.log(patientData,doctorData);
+res.end();
+
 }
 
 
