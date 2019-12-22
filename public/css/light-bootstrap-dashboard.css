@@ -5335,9 +5335,9 @@ img {
 
 header .top-bar .cta-btn {
   display: inline-block;
-  padding-right: 15px;
-  padding-left: 15px;
-  background: #5AC8D8;
+  padding-right: 30px;
+  padding-left: 30px;
+  background: #ffffff;
 }
 
 header .top-bar .cta-btn:hover {
@@ -5346,10 +5346,9 @@ header .top-bar .cta-btn:hover {
 }
 
 header .top-bar {
-  background: #007bff;
-  opacity: 0.65
+  opacity: 0.5
   background:url('../public/images/img_thumb_3.jpg');
-  position: relative;
+  position: middle;
 }
 
 header .top-bar a {
@@ -5361,8 +5360,9 @@ header .top-bar a {
 
 header .top-bar .cta-btn {
   display: inline-block;
-  padding-right: 15px;
-  padding-left: 15px;
+  font-size: 30px;
+  padding-right: 30px;
+  padding-left: 30px;
   background: #5AC8D8;
 }
 
@@ -5433,4 +5433,10 @@ hr {
     left: 0;
     width: 100%;
     height: 100%;
+}
+.avatar {
+  vertical-align: middle;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
 }
