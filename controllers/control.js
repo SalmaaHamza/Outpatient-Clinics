@@ -32,6 +32,10 @@ exports.signupD=(req,res,next)=>{
     res.sendFile(path.join(DirName,'views','home/signup_doctor.html'));
 }
 
+exports.signinD=(req,res,next)=>{
+    res.sendFile(path.join(DirName,'views','home/signin_doctor.html'));
+}
+
 // exports.
 
 exports.post_signupD = (req,res)=>{
@@ -70,7 +74,7 @@ exports.post_signupD = (req,res)=>{
                     bcrypt.hash(newdoctor.Password, salt, (err, hash) => {
                         newdoctor.Password = hash;
                         newdoctor.save().then(savedUser => {
-                            res.sendFile(path.join(DirName,'views','home/user.html'));
+                            res.sendFile(path.join(DirName,'views','home/userDoctor.html'));
 
                             //res.redirect('/patient/'+newpatient.PSSN); 
                         });
@@ -125,8 +129,8 @@ console.log(newpatient)
                     bcrypt.hash(newpatient.Password, salt, (err, hash) => {
                         newpatient.Password = hash;
                         newpatient.save().then(savedUser => {
-                        
-                            res.redirect('/patient/'+newpatient.PSSN); 
+                            res.sendFile(path.join(DirName,'views','home/user.handlebars'));
+                            // res.redirect('/patient/'+newpatient.PSSN); 
                         });
                         console.log(hash);
                     });
@@ -166,18 +170,19 @@ exports.post_signinP = (req,res,next)=>{
        }
     });
 }
+
 exports.post_signinD =  (req,res,next)=>{
     let User=null;
     let Email = req.body.Email;
     let Password = req.body.Password;
-    doctor.findOne({where:{Email:Email}}).then(user=>{
-       User=user;
+    doctor.findOne({where:{Email:Email}}).then(user => {
+    //    console.log(user)
         if(!user){
            console.log('email not found')
        } else{
-           compare(Password, user.Password).then((returnedPassword) => {
+           bcrypt.compare(Password, user.Password).then((returnedPassword) => {
                if (returnedPassword){
-                res.sendFile(path.join(DirName,'views','home/userDoctor.hbs'));
+                res.sendFile(path.join(DirName,'views','home/userDoctor.html'));
                // res.redirect('/patient/'+User.PSSN);
                 
   
