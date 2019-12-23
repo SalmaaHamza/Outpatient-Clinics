@@ -13,7 +13,11 @@ exports.mainroute=(req,res,next) => {
     res.sendFile(path.join(DirName,'views','home/index.html'));
 
 }
-
+exports.doc_create = (req,res,next)=>{
+    // res.render('admin_doc')
+ //   res.render('clinics',{doctors:result, hasDoctor:result.length>0,id:id , dates:dates, hasDates:dates.length>0,layout:false});
+  res.sendFile(path.join(DirName,'views','home/admin_doc.html'));
+}
 
 exports.signin=(req,res,next)=>{  
     res.sendFile(path.join(DirName,'views','home/signin.html'));
@@ -38,9 +42,9 @@ exports.signupD=(req,res,next)=>{
 exports.signinD=(req,res,next)=>{
     res.sendFile(path.join(DirName,'views','home/signin_doctor.html'));
 }
-exports.adminpage =(req,res,next)=>{
-    res.sendFile(path.join(DirName,'views','home/testingOnly.html'));
-} 
+// exports.adminpage =(req,res,next)=>{
+//     res.sendFile(path.join(DirName,'views','home/testingOnly.html'));
+// } 
 // exports.
 
 
@@ -204,18 +208,53 @@ exports.post_signout = (req,res,next)=>{
     res.redirect('/');
 }
 
-// exports.post_adminpage =(req,res,next)=>{
-//     const newdate = new date({
-//             Date : req.body.Date,
-//             price:req.body.Price,
-//             Dname:req.body.Dname,
-//             Time:req.body.Time
-//     })
-//     newdate.save().then(savedUser => {
-//         //res.sendFile(path.join(DirName,'views','home/user.handlebars'));
-//          res.redirect('/adminpage'); 
-//     });
 
+exports.doc_createpost =(req,res,next)=>{
+    const newdoctor = new doctor({
+        
+        DSSN : req.body.DSSN,
+        Email : req.body.Email,
+        Password : req.body.pass,
+        FName : req.body.FName,
+        LName : req.body.LName,
+        Dname:req.body.Dname,
+        Phone: req.body.Phone,
+        Description: req.body.Description,
+     
+        img: req.body.img
+    });
+    
+    if (req.body.pass !== req.body.confirmPass) {
+        
+        //res.sendFile(path.join(DirName,'views','errors/signupwrongpass.html'));
+        console.log('password not match')
 
+    }
+        
+else{
+        doctor.findOne({where:{Email: newdoctor.Email}}).then(user => {
+           
+            if (!user) {
+                bcrypt.genSalt(10, (err, salt) => {
+                    bcrypt.hash(newdoctor.Password, salt, (err, hash) => {
+                        newdoctor.Password = hash;
+                        newdoctor.save().then(savedUser => {
+                            //res.sendFile(path.join(DirName,'views','home/user.handlebars'));
+                             res.redirect('/doc_create'); 
+                        });
+                       
+                    });
+                });
+            } else {
+               
+                console.log('anaa henaa')
+                // res.sendFile(path.join(DirName,'views','errors/signupexistingemail.html'));
+            }
+        });
 
-// }
+    }
+
+}
+
+   
+    

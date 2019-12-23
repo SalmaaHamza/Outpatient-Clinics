@@ -10,11 +10,11 @@ const Doctor= sequelize.define('Doctor',{
     },
     FName: {
     type:Sequelize.STRING,
-    allowNull:false,
+    allowNull:true,
     },
     LName:{
     type:Sequelize.STRING,
-    allowNull:false,
+    allowNull:true
     },
     Email:{
     type:Sequelize.STRING,
