@@ -26,7 +26,7 @@ exports.signup=(req,res,next)=>{
 
 
 exports.userDoctor=(req,res,next)=>{
-    res.sendFile(path.join(DirName,'views','home/userDoctor.hbs'));
+    res.sendFile(path.join(DirName,'views','home/userDoctor.html'));
 }
 
 exports.signupD=(req,res,next)=>{
@@ -40,7 +40,7 @@ exports.signinD=(req,res,next)=>{
 // exports.
 
 exports.post_signupD = (req,res)=>{
-   console.log("signUpDoctor");
+  
     const newdoctor = new doctor({
         DSSN : req.body.DSSN,
         Email : req.body.Email,
@@ -57,8 +57,8 @@ exports.post_signupD = (req,res)=>{
     });
     if (req.body.Password !== req.body.ConfirmPassword) {
         
-      //  res.sendFile(path.join(DirName,'views','errors/signupwrongpassD.html'));
-      console.log('ay klam')
+       res.sendFile(path.join(DirName,'views','errors/signupwrongpassD.html'));
+     
 
     }
         
@@ -72,17 +72,14 @@ else{
                         newdoctor.Password = hash;
                         newdoctor.save().then(savedUser => {
                           //  res.redirect('');
-                            res.sendFile(path.join(DirName,'views','home/userD.handlebars'));
-
-                        
-
-                           
+                            res.sendFile(path.join(DirName,'views','home/userDoctor.html'));
+         
                         });
                        
                     });
                 });
             } else {
-                // req.flash('already_user','The E-mail exists,please login')
+               
                 console.log('The E-mail exists,please login');
                 
                 res.send("please login").status(200);
@@ -165,7 +162,7 @@ exports.post_signinP = (req,res,next)=>{
 }
 
 exports.post_signinD =  (req,res,next)=>{
-    let User=null;
+   
     let Email = req.body.Email;
     let Password = req.body.Password;
     doctor.findOne({where:{Email:Email}}).then(user => {
@@ -177,12 +174,12 @@ exports.post_signinD =  (req,res,next)=>{
        } else{
            bcrypt.compare(Password, user.Password).then((returnedPassword) => {
                if (returnedPassword){
-                res.sendFile(path.join(DirName,'views','home/userD.handlebars'));
+                res.sendFile(path.join(DirName,'views','home/userDoctor.html'));
                   
   
                }
                else{
-                res.sendFile(path.join(DirName,'views','home/siginwrongpassD.html'));
+                res.sendFile(path.join(DirName,'views','errors/siginwrongpassD.html'));
                   
                }
            });
