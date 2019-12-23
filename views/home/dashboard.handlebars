@@ -62,7 +62,8 @@
                         <span class="navbar-toggler-bar burger-lines"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
-
+                        <p class="mb-0">
+                                              <a href="#" class="cta-btn" data-toggle="modal" data-target="#modalAppointment" style="  display: inline-block; background: white; color: black">Make an Complain</a></p>
                         <ul class="navbar-nav ml-auto">
 
                             <li class="nav-item">
@@ -199,6 +200,34 @@
     
 
             </div>
+
+
+
+                    <div class="modal fade" id="modalAppointment" tabindex="-1" role="dialog" aria-labelledby="modalAppointmentLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="modalAppointmentLabel"><strong>Complain</strong></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <hr/>
+              <div class="modal-body">
+                <form method="POST" action="/appointment/{{ id }}">
+                  <div class="form-group">
+                    <label for="appointment_message" class="text-black">Your counsaltance</label>
+                    <textarea rows="5" style="height: 100%" class="form-control"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" value="Send!" class="btn btn-primary">
+                  </div>
+                </form>
+              </div>
+              
+            </div>
+          </div>
+      </div>
         
 </body>
 <!--   Core JS Files   -->
