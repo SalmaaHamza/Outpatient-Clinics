@@ -37,7 +37,7 @@ flash({ locals: 'flash' })
 
 
 // synchronizing with database 
-sequelize.sync({force:true}).then(res => { 
+sequelize.sync().then(res => { 
   app.listen(3000,() => {
     console.log('Running')
    })

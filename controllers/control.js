@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs')
 const patient = require('../models/patient')
 const doctor = require('../models/doctor')
 const flash = require('req-flash')
+const date = require('../models/date')
+
 // the main route which render the main html page
 
 exports.mainroute=(req,res,next) => {
@@ -36,8 +38,11 @@ exports.signupD=(req,res,next)=>{
 exports.signinD=(req,res,next)=>{
     res.sendFile(path.join(DirName,'views','home/signin_doctor.html'));
 }
-
+exports.adminpage =(req,res,next)=>{
+    res.sendFile(path.join(DirName,'views','home/testingOnly.html'));
+} 
 // exports.
+
 
 exports.post_signupD = (req,res)=>{
   
@@ -71,15 +76,15 @@ else{
                     bcrypt.hash(newdoctor.Password, salt, (err, hash) => {
                         newdoctor.Password = hash;
                         newdoctor.save().then(savedUser => {
-<<<<<<< HEAD
-                          //  res.redirect('');
-                            res.sendFile(path.join(DirName,'views','home/userDoctor.html'));
+
+                        //   //  res.redirect('');
+                        //     res.sendFile(path.join(DirName,'views','home/userDoctor.html'));
          
-=======
+
                             res.redirect('/doctor/'+newdoctor.DSSN);
 
                            
->>>>>>> 3bc75266d6ab7c96c8a052f49acca3a441ad9a0e
+
                         });
                        
                     });
@@ -180,14 +185,10 @@ exports.post_signinD =  (req,res,next)=>{
        } else{
            bcrypt.compare(Password, user.Password).then((returnedPassword) => {
                if (returnedPassword){
-<<<<<<< HEAD
-                res.sendFile(path.join(DirName,'views','home/userDoctor.html'));
-                  
-=======
+
+
                 res.redirect('/doctor/'+user.DSSN);
                 
->>>>>>> 3bc75266d6ab7c96c8a052f49acca3a441ad9a0e
-  
                }
                else{
                 res.sendFile(path.join(DirName,'views','errors/siginwrongpassD.html'));
@@ -203,4 +204,18 @@ exports.post_signout = (req,res,next)=>{
     res.redirect('/');
 }
 
+// exports.post_adminpage =(req,res,next)=>{
+//     const newdate = new date({
+//             Date : req.body.Date,
+//             price:req.body.Price,
+//             Dname:req.body.Dname,
+//             Time:req.body.Time
+//     })
+//     newdate.save().then(savedUser => {
+//         //res.sendFile(path.join(DirName,'views','home/user.handlebars'));
+//          res.redirect('/adminpage'); 
+//     });
 
+
+
+// }
