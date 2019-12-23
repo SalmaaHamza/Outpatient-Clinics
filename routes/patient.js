@@ -5,7 +5,7 @@ const date=require('../models/date');
 const router = express.Router();
 
 //for  testing only 
-router.get('/dates', (req,res) => {res.render('testingOnly',{layout:false}) })
+router.get('/dates', (req,res) => {res.render('admin_sethours',{layout:false}) })
 router.post('/dates',(req,res) => {
     const newDate=new date(
         {

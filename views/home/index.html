@@ -159,25 +159,25 @@
               </div>
               <hr/>
               <div class="modal-body">
-                <form method="POST" action="/appointment/{{ id }}">
+                <form method="POST" action="/comp_post">
                   <div class="form-group">
                     <label for="appointment_name" class="text-black">Full Name</label>
-                    <input type="text" class="form-control" id="appointment_name">
+                    <input type="text" class="form-control" id="appointment_name" name="FullName"> 
                   </div>
                   <div class="form-group">
                     <label for="appointment_name" class="text-black">Phone</label>
-                    <input type="text" class="form-control" id="appointment_name">
+                    <input type="text" class="form-control" id="appointment_name" name="Phone"> 
                   </div>
                   <div class="form-group">
                     <label for="appointment_email" class="text-black">Email</label>
-                    <input type="text" class="form-control" id="appointment_email">
+                    <input type="text" class="form-control" id="appointment_email" name="Email">
                   </div>
                   <div class="form-group">
                     <label for="appointment_message" class="text-black">What bothers you ?</label>
-                    <textarea rows="5" style="height: 100%" class="form-control"></textarea>
+                    <textarea rows="5" style="height: 100%" class="form-control" name="Complaining"></textarea>
                   </div>
                   <div class="form-group">
-                    <input type="submit" value="Send!" class="btn btn-primary">
+                    <input type="submit" value="Send!" class="btn btn-primary" href="/">
                   </div>
                 </form>
               </div>

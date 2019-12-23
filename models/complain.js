@@ -23,4 +23,5 @@ const Complain= sequelize.define('Complain',{
 })
 
 
+
 module.exports=Complain;

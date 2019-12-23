@@ -15,6 +15,11 @@ router.get('/signup',controller.signup)
 router.get('/signupD',controller.signupD)
 router.get('/doc_create',controller.doc_create)
 router.get('/analysis',controller.analysis)
+router.get('/comp',controller.comp)
+
+
+
+router.post('/comp'.controller.comp_post)
 //router.get('/adminpage',controller.adminpage)
 router.post('/doc_create',controller.doc_createpost)
 router.post('/signin',controller.post_signinP)
@@ -24,5 +29,8 @@ router.get('/logout',controller.post_signout)
 router.post('/signupD',controller.post_signupD)
 router.get('/',controller.mainroute);
 router.get('/signupD',controller.post_signupD)
+
+router.get('/adminD',controller.adminD)
+router.get('/adminP',controller.adminP)
 module.exports=router;
 

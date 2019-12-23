@@ -6,6 +6,7 @@ const doctor = require('../models/doctor')
 const flash = require('req-flash')
 const date = require('../models/date')
 const appointment = require('../models/appointment')
+const complain = require('../models/complain')
 
 // the main route which render the main html page
 
@@ -14,11 +15,23 @@ exports.mainroute=(req,res,next) => {
     res.sendFile(path.join(DirName,'views','home/index.html'));
 
 }
-exports.doc_create = (req,res,next)=>{
-    // res.render('admin_doc')
- //   res.render('clinics',{doctors:result, hasDoctor:result.length>0,id:id , dates:dates, hasDates:dates.length>0,layout:false});
-  res.sendFile(path.join(DirName,'views','home/admin_doc.html'));
+exports.adminD =(req,res,next)=>{
+    res.render('ad_doc_table',{layout:false})
 }
+exports.adminP =(req,res,next)=>{
+    res.render('ad_pat_tables',{layout:false})
+}
+
+exports.doc_create = (req,res,next)=>{
+    
+ res.render('admin_doc',{layout:false})
+}
+
+exports.comp=(req,res,next)=>{
+    res.render('comlain_tables',{layout:false})
+}
+
+
 
 exports.signin=(req,res,next)=>{  
     res.sendFile(path.join(DirName,'views','home/signin.html'));
@@ -43,10 +56,6 @@ exports.signupD=(req,res,next)=>{
 exports.signinD=(req,res,next)=>{
     res.sendFile(path.join(DirName,'views','home/signin_doctor.html'));
 }
-// exports.adminpage =(req,res,next)=>{
-//     res.sendFile(path.join(DirName,'views','home/testingOnly.html'));
-// } 
-// exports.
 
 exports.analysis = (req,res)=>{
     let noofapp=0;
@@ -190,7 +199,12 @@ exports.post_signinP = (req,res,next)=>{
     let Email = req.body.Email;
     let Password = req.body.Password;
     patient.findOne({where:{Email:Email}}).then(user=>{
+
        User=user;
+       if(Email=='admin@gmail.com' && Password == 0000){
+        res.render('/dates',{layout:false})
+
+       }else{
         if(!user){
 
             res.sendFile(path.join(DirName,'views','errors/signinwrongemail.html'));
@@ -208,8 +222,8 @@ exports.post_signinP = (req,res,next)=>{
                }
            });
        }
-    });
-}
+    }
+});
 
 exports.post_signinD =  (req,res,next)=>{
    
@@ -290,6 +304,15 @@ else{
     }
 
 }
+}
 
-   
-    
+exports.comp_post = (req,res,next)=>{
+    const newcomp = new complain({
+        Email:req.body.Email,
+        Phone:req.body.Phone,
+        FullName:req.body.FullName,
+        Complaining:req.body.Complaining
+
+    });
+    newcomp.save().then(res.render('/'))
+}
