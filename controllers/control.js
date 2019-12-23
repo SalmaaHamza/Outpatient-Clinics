@@ -5,6 +5,7 @@ const patient = require('../models/patient')
 const doctor = require('../models/doctor')
 const flash = require('req-flash')
 const date = require('../models/date')
+const appointment = require('../models/appointment')
 
 // the main route which render the main html page
 
@@ -47,6 +48,38 @@ exports.signinD=(req,res,next)=>{
 // } 
 // exports.
 
+exports.analysis = (req,res)=>{
+    let noofapp=0;
+    let newdoctor=0;
+    let newpatient=0;
+    let array=[];
+        doctor.findAll().then(doctor=>{
+            // console.log (user);
+            noofdoctor=0;
+           noofdoctor += doctor.length;
+           array[0]=noofdoctor;
+            // console.log("number of :",noofdoctor);
+            patient.findAll().then(patient=>{
+                noofpatient=0;
+                noofpatient += patient.length;
+                array[1]=noofpatient;
+                appointment.findAll().then(appoint=>{
+                    noofapp=0;
+                    noofapp += appoint.length;
+                    array[2]=noofapp;
+                    // var array = [noofdoctor ,noofpatient ,noofapp];
+                    console.log( "iam hereee",array); 
+                    res.render('analysis',{array:array,layout:false});
+               });
+            }); 
+        });
+    
+    
+        
+        
+        
+        
+    }
 
 exports.post_signupD = (req,res)=>{
   
