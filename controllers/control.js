@@ -71,9 +71,15 @@ else{
                     bcrypt.hash(newdoctor.Password, salt, (err, hash) => {
                         newdoctor.Password = hash;
                         newdoctor.save().then(savedUser => {
+<<<<<<< HEAD
                           //  res.redirect('');
                             res.sendFile(path.join(DirName,'views','home/userDoctor.html'));
          
+=======
+                            res.redirect('/doctor/'+newdoctor.DSSN);
+
+                           
+>>>>>>> 3bc75266d6ab7c96c8a052f49acca3a441ad9a0e
                         });
                        
                     });
@@ -174,8 +180,13 @@ exports.post_signinD =  (req,res,next)=>{
        } else{
            bcrypt.compare(Password, user.Password).then((returnedPassword) => {
                if (returnedPassword){
+<<<<<<< HEAD
                 res.sendFile(path.join(DirName,'views','home/userDoctor.html'));
                   
+=======
+                res.redirect('/doctor/'+user.DSSN);
+                
+>>>>>>> 3bc75266d6ab7c96c8a052f49acca3a441ad9a0e
   
                }
                else{
