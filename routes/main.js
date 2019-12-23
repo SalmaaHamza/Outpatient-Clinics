@@ -19,7 +19,7 @@ router.get('/comp',controller.comp)
 
 
 
-router.post('/comp'.controller.comp_post)
+router.post('/comp', controller.comp_post)
 //router.get('/adminpage',controller.adminpage)
 router.post('/doc_create',controller.doc_createpost)
 router.post('/signin',controller.post_signinP)
