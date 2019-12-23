@@ -42,33 +42,52 @@
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-image="../../images/img_thumb_3.jpg">
-->
+                <div class="sidebar" data-image="../../images/img_thumb_3.jpg">
+
             <div class="sidebar-wrapper">
                 <div class="logo">
-                    <!-- <a href="http://www.creative-tim.com" class="simple-text">
+                    <!-- <a href="http://www.creative-tim.com"class="simple-text">
                         Hospital
                     </a> -->
                 </div>
                 <ul class="nav">
                     <li>
-                        <a class="nav-link" href="/doctor/edit/{{ id }}">
+                        <a class="nav-link" href="/patient/Home/{{ id }}">
                             <i class="nc-icon nc-circle-09"></i>
                             <p>Create Doc. acc.</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/doctor/table/{{ id }}">
+                    <li>
+                        <a class="nav-link" href="/patient/edit/{{ id }}">
                             <i class="nc-icon nc-notes"></i>
-                            <p>View All Data</p>
+                            <p>View Patient Data</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/doctor/table/{{ id }}">
+                    <li>
+                        <a class="nav-link" href="/patient/table/{{ id }}">
                             <i class="nc-icon nc-notes"></i>
-                            <p>Working data</p>
+                            <p>View Doctors Data</p>
                         </a>
                     </li>
+                     <li class="nav-item active">
+                        <a class="nav-link" href="/patient/Home/{{ id }}">
+                            <i class="nc-icon nc-paper-2"></i>
+                            <p>Set Depart. Opts.</p>
+                        </a>
+                    </li>
+                     <li>
+                        <a class="nav-link" href="/patient/Home/{{ id }}">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>View our Complains</p>
+                        </a>
+                    </li>
+                     <li>
+                        <a class="nav-link" href="/patient/Home/{{ id }}">
+                            <i class="nc-icon nc-chart-pie-35"></i>
+                            <p>Show Statistics</p>
+                        </a>
+                    </li>
+                    
                     
                 </ul>
             </div>
