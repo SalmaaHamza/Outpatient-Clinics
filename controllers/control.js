@@ -114,10 +114,12 @@ exports.post_signup = (req,res)=>{
         LName : req.body.LName,
         Age:req.body.Age,
         Phone: req.body.Phone,
+        image:req.file.path,
         Description: req.body.Description,
         Username: req.body.Username,
         Address: req.body.Address
     });
+    console.log("fileees",req.file);
     
     if (req.body.Password !== req.body.ConfirmPassword) {
         
