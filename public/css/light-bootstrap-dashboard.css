@@ -584,13 +584,13 @@ body>.navbar-collapse:before {
 
 .sidebar:after,
 body>.navbar-collapse:after {
-    background:  #007bff;
-    background: -moz-linear-gradient(top, #007bff 0%, #007bff 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #007bff), color-stop(100%, #007bff));
-    background: -webkit-linear-gradient(top, #007bff 0%, #007bff 100%);
-    background: -o-linear-gradient(top, #007bff 0%, #007bff 100%);
-    background: -ms-linear-gradient(top, #007bff 0%, #007bff 100%);
-    background: linear-gradient(to bottom, #007bff 0%, #007bff 100%);
+    background:  #012483;
+    background: -moz-linear-gradient(top, #012483 0%, #012483 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #012483), color-stop(100%, #012483));
+    background: -webkit-linear-gradient(top, #012483 0%, #012483 100%);
+    background: -o-linear-gradient(top, #012483 0%, #012483 100%);
+    background: -ms-linear-gradient(top, #012483 0%, #012483 100%);
+    background: linear-gradient(to bottom, #012483 0%, #012483 100%);
     background-size: 150% 150%;
     z-index: 3;
     opacity: 1;
