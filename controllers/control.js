@@ -6,7 +6,7 @@ const doctor = require('../models/doctor')
 const flash = require('req-flash')
 const date = require('../models/date')
 const appointment = require('../models/appointment')
-const complain = require('../models/complain')
+const complain = require('../models/Complain')
 
 // the main route which render the main html page
 
@@ -318,5 +318,5 @@ exports.comp_post = (req,res,next)=>{
         Complaining:req.body.Complaining
 
     });
-    newcomp.save().then(res.render('/'))
+    newcomp.save().then( res.redirect('/'))
 }
