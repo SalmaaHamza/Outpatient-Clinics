@@ -75,6 +75,7 @@ else{
 router.post('/signinD', (req,res,next) => {
     let Email = req.body.Email;
     let Password = req.body.Password;
+    console.log("doctor",req.body);
     doctor.findOne({where:{Email:Email}}).then(user => {
  
         if(!user){           
