@@ -6,7 +6,7 @@ const doctor = require('../models/doctor')
 const flash = require('req-flash')
 const date = require('../models/date')
 const appointment = require('../models/appointment')
-const complain = require('../models/Complain')
+const complain = require('../models/complain')
 
 // the main route which render the main html page
 
