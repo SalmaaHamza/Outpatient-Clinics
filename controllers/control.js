@@ -231,8 +231,8 @@ exports.post_signinP = (req,res,next)=>{
 
 exports.post_signinD =  (req,res,next)=>{
    
-    let Email = req.body.Email;
-    let Password = req.body.Password;
+    let Email = req.body.email;
+    let Password = req.body.Pass;
     doctor.findOne({where:{Email:Email}}).then(user => {
  
         if(!user){           
