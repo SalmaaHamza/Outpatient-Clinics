@@ -38,7 +38,7 @@
         }
             /* Text to display scale */
             ctx.fillStyle = '#000000';
-            ctx.fillText('Scale X : '+canvas.width+' Y : '+canvas.height,800,10);
+           // {{!-- ctx.fillText('Scale X : '+canvas.width+' Y : '+canvas.height,800,10); --}}
   
     }
     function reset(){
@@ -133,8 +133,7 @@
     <input type="hidden" name="number" value={{array}} id="num"><br>
     <input type="button" value="submit" name="submit" onclick="draw()" style="position: absolute; right: 700px;">
     <input type="button" value="Clear" name="Clear" onclick="reset()" style="position:absolute;"><br><br> 
-    <!--<canvas id="myCanvas" width="900" height="500" style="border:1px solid #c3c3c3;">
-    </canvas>-->
+    
 
 
 
@@ -144,14 +143,16 @@
                                     <h4 class="card-title">Site Statistics</h4>
                                     <p class="card-category">All Numbers related to our website</p>
                                 </div>
-                                <div class="card-body ">
+                                {{!-- <div class="card-body ">
                                     <div id="chartActivity" class="ct-chart"></div>
-                                </div>
+                                </div> --}}
+                                <canvas id="myCanvas" width="900" height="500" style="border:1px solid #c3c3c3;">
+    </canvas> 
                                 <div class="card-footer ">
-                                    <div class="legend">
+                                    {{!-- <div class="legend">
                                         <i class="fa fa-circle text-info"></i> patient
                                         <i class="fa fa-circle text-danger"></i> doctor
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
