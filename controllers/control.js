@@ -1,5 +1,5 @@
-const path = require('path');
-const DirName=require('../util/path');
+const DirName=require('../util/path')
+const path= require('path')
 const bcrypt = require('bcryptjs')
 const patient = require('../models/patient')
 const doctor = require('../models/doctor')
