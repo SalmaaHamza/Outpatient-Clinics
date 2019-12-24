@@ -10,7 +10,8 @@ const doctor = require('../models/doctor')
 
 // the main route reference to the controller file  
 
-
+// router.get('/admin/tabledoctors',controller.admin_doctor);
+// router.get('/admin/tablepatients',controller.admin_patient);
 router.get('/home/userdoctor',controller.userDoctor);;
 router.get('/signin',controller.signin);;
 router.get('/signinD',controller.signinD);;
