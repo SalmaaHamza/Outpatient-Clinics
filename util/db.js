@@ -9,7 +9,7 @@ const Sequelize=require('sequelize');
 // });
 
 // hosting locally
-const sequelize = new Sequelize('web_project','root','',{
+const sequelize = new Sequelize('web_project','root','mysql',{
   host:'localhost',
   dialect:'mysql'
  

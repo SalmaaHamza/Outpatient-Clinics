@@ -342,3 +342,10 @@ exports.comp_post = (req,res,next)=>{
     });
     newcomp.save().then( res.redirect('/'))
 }
+exports.clincs_date = (req,res,next)=>{
+   // res.redirect('')
+  
+   res.render('datesadmin',{layout:false})
+
+
+}
