@@ -28,17 +28,16 @@ router.post('/doc_create',(req,res,next) => {
     const newdoctor = new doctor({
         
         DSSN : req.body.DSSN,
-        Email : req.body.Email,
+        Email : req.body.email,
         Password : req.body.pass,
         FName : req.body.FName,
         LName : req.body.LName,
         Dname:req.body.Dname,
-        Phone: req.body.Phone,
+        Phone: req.body.phone,
         Description: req.body.Description,
-     
         img: req.body.img
     });
-    
+    console.log(req.body)
     if (req.body.pass !== req.body.confirmPass) {
         
         //res.sendFile(path.join(DirName,'views','errors/signupwrongpass.html'));
