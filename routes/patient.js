@@ -10,7 +10,7 @@ router.post('/dates',(req,res) => {
     const newDate=new date(
         {
             Date:req.body.date,
-            Price:req.body.Price,
+            Price:req.body.price,
             Time:req.body.Time,
             Dname:req.body.Dname
         }
