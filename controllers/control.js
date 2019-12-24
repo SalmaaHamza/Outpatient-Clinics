@@ -6,7 +6,7 @@ const doctor = require('../models/doctor')
 const flash = require('req-flash')
 const date = require('../models/date')
 const appointment = require('../models/appointment')
-const complain = require('../models/complain')
+const complain = require('../models/Complain')
 
 // the main route which render the main html page
 
@@ -253,8 +253,8 @@ exports.post_signinP = (req,res,next)=>{
 
 exports.post_signinD =  (req,res,next)=>{
    
-    let Email = req.body.Email;
-    let Password = req.body.Password;
+    let Email = req.body.email;
+    let Password = req.body.Pass;
     doctor.findOne({where:{Email:Email}}).then(user => {
  
         if(!user){           
@@ -340,5 +340,5 @@ exports.comp_post = (req,res,next)=>{
         Complaining:req.body.Complaining
 
     });
-    newcomp.save().then(res.render('/'))
+    newcomp.save().then( res.redirect('/'))
 }
