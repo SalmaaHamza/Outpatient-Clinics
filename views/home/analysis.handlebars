@@ -34,7 +34,8 @@
             X +=  width+15;
             /* text to display Bar number */
             ctx.fillStyle = '#4da6ff';
-            ctx.fillText(name[i],X-50,canvas.height - h -10);
+            //{{!-- ctx.font = "14px Arial"; --}}
+            ctx.fillText(name[i] + h,X-50,canvas.height - h -10);
         }
             /* Text to display scale */
             ctx.fillStyle = '#000000';

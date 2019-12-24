@@ -162,12 +162,14 @@
                                             <th style="font-weight:bold">Phone</th>
                                         </thead>
                                         <tbody>
+                                            {{#each complains}}
                                             <tr>
                                                 <td>{{this.Email}}</td>
                                                 <td>{{this.FullName}}</td>
                                                 <td>{{this.Complaining}}</td>
                                                 <td>{{this.Phone}}</td>
                                             </tr>
+                                            {{/each}}
                                         </tbody>
                                     </table>
                                 </div>
