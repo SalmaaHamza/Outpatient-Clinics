@@ -19,7 +19,8 @@ router.get('/signup',controller.signup);;
 router.get('/signupD',controller.signupD);;
 router.get('/doc_create',controller.doc_create);;
 router.get('/analysis',controller.analysis);;
-router.get('/comp',controller.comp);;
+router.get('/comp',controller.comp);
+
 
 
 

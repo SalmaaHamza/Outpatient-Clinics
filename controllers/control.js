@@ -29,13 +29,16 @@ exports.adminP =(req,res,next)=>{
     
 }
 
+
 exports.doc_create = (req,res,next)=>{
     
  res.render('admin_doc',{layout:false})
 }
 
 exports.comp=(req,res,next)=>{
-    res.render('comlain_tables',{layout:false})
+    complain.findAll().then(complains=>{
+    res.render('comlain_tables',{complains:complains,layout:false})
+    })
 }
 
 
