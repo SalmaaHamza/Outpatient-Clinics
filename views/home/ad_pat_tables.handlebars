@@ -162,6 +162,7 @@
                                             <th style="font-weight:bold">Address</th>
                                         </thead>
                                         <tbody>
+                                            {{#each patients}}
                                             <tr>
                                                 <td>{{this.PSSN}}</td>
                                                 <td>{{this.FName}}</td>
@@ -172,8 +173,9 @@
                                                 <td>{{this.Username}}</td>
                                                 <td>{{this.image}}</td>
                                                 <td>{{this.Email}}</td>
-                                                <td>{{this.Adress}}</td>
+                                                <td>{{this.Address}}</td>
                                             </tr>
+                                            {{/each}}
                                         </tbody>
                                     </table>
                                 </div>

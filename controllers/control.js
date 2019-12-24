@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 const DirName=require('../util/path');
 const bcrypt = require('bcryptjs')
 const patient = require('../models/patient')
@@ -16,10 +16,17 @@ exports.mainroute=(req,res,next) => {
 
 }
 exports.adminD =(req,res,next)=>{
-    res.render('ad_doc_table',{layout:false})
+    doctor.findAll().then(doctors=>{
+        console.log(doctors)
+        res.render('ad_doc_table',{doctors:doctors,layout:false})
+    })
 }
 exports.adminP =(req,res,next)=>{
-    res.render('ad_pat_tables',{layout:false})
+    patient.findAll().then(patients =>{
+        console.log(patients)
+        res.render('ad_pat_tables',{patients:patients,layout:false})
+    })
+    
 }
 
 exports.doc_create = (req,res,next)=>{
@@ -56,6 +63,21 @@ exports.signupD=(req,res,next)=>{
 exports.signinD=(req,res,next)=>{
     res.sendFile(path.join(DirName,'views','home/signin_doctor.html'));
 }
+
+// exports.admin_doctor = (req,res,next)=>{
+//     doctor.findAll().then(doctors=>{
+//         console.log(doctors)
+//         res.render('ad_doc_table',{doctors:doctors,layout:false})
+//         // {DSSN:user.DSSN,FName:user.FName,LName:user.LName,Description:user.Description,Phone:user.Phone,
+//         // Age:user.Age,Email:user.Email,Address:user.Address})
+//     })
+// }
+// exports.admin_patient = (req,res,next)=>{
+//     patient.findAll().then(patients =>{
+//         console.log(patients)
+//         res.render('ad_pat_table',{patient:patients,layout:false})
+//     })
+// }
 
 exports.analysis = (req,res)=>{
     let noofapp=0;

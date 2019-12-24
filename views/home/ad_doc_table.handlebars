@@ -153,23 +153,25 @@
                                             <th style="font-weight:bold">DSSN</th>
                                             <th style="font-weight:bold">First Name</th>
                                             <th style="font-weight:bold">Last Name</th>
-                                            <th style="font-weight:bold">Description</th>
+                                            {{!-- <th style="font-weight:bold">Description</th> --}}
                                             <th style="font-weight:bold">Phone</th>
-                                            <th style="font-weight:bold">Age</th>
+                                            {{!-- <th style="font-weight:bold">Age</th> --}}
                                             <th style="font-weight:bold">Email</th>
-                                            <th style="font-weight:bold">Address</th>
+                                            {{!-- <th style="font-weight:bold">Address</th> --}}
                                         </thead>
                                         <tbody>
+                                            {{#each doctors}}
                                             <tr>
-                                                <td>{{this.PSSN}}</td>
+                                                <td>{{this.DSSN}}</td>
                                                 <td>{{this.FName}}</td>
                                                 <td>{{this.LName}}</td>
-                                                <td>{{this.Description}}</td>
+                                                {{!-- <td>{{this.Description}}</td> --}}
                                                 <td>{{this.Phone}}</td>
-                                                <td>{{this.Age}}</td>
+                                                {{!-- <td>{{this.Age}}</td> --}}
                                                 <td>{{this.Email}}</td>
-                                                <td>{{this.Adress}}</td>
+                                                {{!-- <td>{{this.Adress}}</td> --}}
                                             </tr>
+                                            {{/each}}
                                         </tbody>
                                     </table>
                                 </div>
