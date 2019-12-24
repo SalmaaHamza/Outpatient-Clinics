@@ -111,5 +111,6 @@ router.get('/signupD',controller.post_signupD)
 router.get('/adminD',controller.adminD);;
 router.get('/adminP',controller.adminP);;
 router.get('/',controller.mainroute);
+router.get('/clincs_date',controller.clincs_date)
 module.exports=router;
 
