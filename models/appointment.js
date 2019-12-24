@@ -42,11 +42,11 @@ const Appointment= sequelize.define('Appointments',{
         allowNull:false
     },
     PSSN:{
-        type:Sequelize.INTEGER,
+        type:Sequelize.BIGINT(20),
         allowNull:false
     },
     DSSN:{
-        type:Sequelize.INTEGER,
+        type:Sequelize.BIGINT(20),
         allowNull:false
     }
 
