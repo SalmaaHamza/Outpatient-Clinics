@@ -7,6 +7,7 @@ const router = express.Router();
 //for  testing only 
 router.get('/dates', (req,res) => {res.render('admin_sethours',{layout:false}) })
 router.post('/dates',(req,res) => {
+//  console.log("dates",req.body)
     const newDate=new date(
         {
             Date:req.body.date,

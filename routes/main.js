@@ -37,9 +37,9 @@ router.post('/doc_create',(req,res,next) => {
         Dname:req.body.Dname,
         Phone: req.body.phone,
         Description: req.body.Description,
-        img: req.body.img
+        img: req.file.path.split('/')[2]
     });
-    console.log(req.body)
+    console.log(req.file.path.split('/')[2])
     if (req.body.pass !== req.body.confirmPass) {
         
         //res.sendFile(path.join(DirName,'views','errors/signupwrongpass.html'));

@@ -17,13 +17,11 @@ exports.mainroute=(req,res,next) => {
 }
 exports.adminD =(req,res,next)=>{
     doctor.findAll().then(doctors=>{
-        console.log(doctors)
         res.render('ad_doc_table',{doctors:doctors,layout:false})
     })
 }
 exports.adminP =(req,res,next)=>{
     patient.findAll().then(patients =>{
-        console.log(patients)
         res.render('ad_pat_tables',{patients:patients,layout:false})
     })
     
@@ -102,7 +100,6 @@ exports.analysis = (req,res)=>{
                     noofapp += appoint.length;
                     array[2]=noofapp;
                     // var array = [noofdoctor ,noofpatient ,noofapp];
-                    console.log( "iam hereee",array); 
                     res.render('analysis',{array:array,layout:false});
                });
             }); 
@@ -128,7 +125,7 @@ exports.post_signupD = (req,res)=>{
         //Username: req.body.Username,
         //Address: req.body.Address
         Description:req.body.Description,
-        img:req.body.img
+        img:req.file.path.split('/')[2]
 
     });
     if (req.body.Password !== req.body.ConfirmPassword) {
@@ -186,7 +183,7 @@ exports.post_signup = (req,res)=>{
         Username: req.body.Username,
         Address: req.body.Address
     });
-    console.log("fileees",req.file);
+    // console.log("fileees",req.file);
     
     if (req.body.Password !== req.body.ConfirmPassword) {
         
@@ -298,10 +295,8 @@ exports.doc_createpost =(req,res,next)=>{
         Dname:req.body.Dname,
         Phone: req.body.Phone,
         Description: req.body.Description,
-     
-        img: req.body.img
+        img: req.body.image
     });
-    
     if (req.body.pass !== req.body.confirmPass) {
         
         //res.sendFile(path.join(DirName,'views','errors/signupwrongpass.html'));
