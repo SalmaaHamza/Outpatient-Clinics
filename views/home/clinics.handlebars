@@ -177,7 +177,7 @@
                 <form method="POST" action="/appointment/{{ id }}">
                   <div class="form-group">
                      <label for="appointment_name" class="text-black">Doctor Name</label>
-                      <select name="doctorId">
+                      <select name="doctorId" required>
                           {{#each doctors }}
                             <option value= {{ this.DSSN}} > {{ this.FName}} {{ this.LName}} </option>
                           {{/each}}
@@ -190,21 +190,23 @@
                     <label for="appointment_email" class="text-black">Clinic</label>
                     <input type="text" class="form-control" id="appointment_email">
                   </div> --}}
-                  {{#if hasDates }}
+                  
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="appointment_date" class="text-black">Date</label>
+                          <label for="appointment_date" class="text-black" >Date</label>
                           {{!-- <input type="date" class="form-control" id="appointment_date"> --}}
-                          <select name="date">
+                          <select name="date" required >
+                           {{#if hasDates }}
                             {{#each dates }}
                             <option value="{{ this.Date }}-{{ this.Time}}-{{ this.Price}}"> {{ this.Date}}-{{ this.Time}}-{{  this.Price}} EGP</option>
                             {{/each}}
+                           {{/if}} 
                           </select>
                         </div>    
                       </div>
                     </div>
-                  {{/if}}
+                  
 
                   <div class="form-group">
                     <label for="appointment_message" class="text-black">Your counsaltance</label>
@@ -218,7 +220,7 @@
               
             </div>
           </div>
-      </div>
+      </div> 
 
     
         

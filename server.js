@@ -36,7 +36,6 @@ if(file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimety
 {
   cb(null,true);
 } else{
-  console.log("wrong image type");
  cb(null,false);
 }
 }

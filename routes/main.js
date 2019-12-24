@@ -1,36 +1,113 @@
 const express = require('express');
 const controller = require('../controllers/control');
 const path = require('path');
+const bcrypt = require('bcryptjs')
+const DirName=require('../util/path');
 const router = express.Router();
 
-const User = require('../models/patient')
+const patient = require('../models/patient')
+const doctor = require('../models/doctor')
 
 // the main route reference to the controller file  
 
 
-router.get('/home/userdoctor',controller.userDoctor)
-router.get('/signin',controller.signin)
-router.get('/signinD',controller.signinD)
-router.get('/signup',controller.signup)
-router.get('/signupD',controller.signupD)
-router.get('/doc_create',controller.doc_create)
-router.get('/analysis',controller.analysis)
-router.get('/comp',controller.comp)
+router.get('/home/userdoctor',controller.userDoctor);;
+router.get('/signin',controller.signin);;
+router.get('/signinD',controller.signinD);;
+router.get('/signup',controller.signup);;
+router.get('/signupD',controller.signupD);;
+router.get('/doc_create',controller.doc_create);;
+router.get('/analysis',controller.analysis);;
+router.get('/comp',controller.comp);;
 
 
 
-router.post('/comp', controller.comp_post)
-//router.get('/adminpage',controller.adminpage)
-router.post('/doc_create',controller.doc_createpost)
-router.post('/signin',controller.post_signinP)
-router.post('/signinD',controller.post_signinD)
-router.post('/signup',controller.post_signup)
-router.get('/logout',controller.post_signout)
-router.post('/signupD',controller.post_signupD)
-router.get('/',controller.mainroute);
+router.post('/comp', controller.comp_post);;
+// router.get('/adminpage',controller.adminpage)
+router.post('/doc_create',(req,res,next) => {
+    const newdoctor = new doctor({
+        
+        DSSN : req.body.DSSN,
+        Email : req.body.Email,
+        Password : req.body.pass,
+        FName : req.body.FName,
+        LName : req.body.LName,
+        Dname:req.body.Dname,
+        Phone: req.body.Phone,
+        Description: req.body.Description,
+     
+        img: req.body.img
+    });
+    
+    if (req.body.pass !== req.body.confirmPass) {
+        
+        //res.sendFile(path.join(DirName,'views','errors/signupwrongpass.html'));
+        console.log('password not match')
+
+    }
+        
+else{
+        doctor.findOne({where:{Email: newdoctor.Email}}).then(user => {
+           
+            if (!user) {
+                bcrypt.genSalt(10, (err, salt) => {
+                    bcrypt.hash(newdoctor.Password, salt, (err, hash) => {
+                        newdoctor.Password = hash;
+                        newdoctor.save().then(savedUser => {
+                            //res.sendFile(path.join(DirName,'views','home/user.handlebars'));
+                             res.redirect('/doc_create'); 
+                        });
+                       
+                    });
+                });
+            } else {
+               
+                console.log('anaa henaa')
+                // res.sendFile(path.join(DirName,'views','errors/signupexistingemail.html'));
+            }
+        });
+
+    }
+
+
+})
+ router.post('/signin',controller.post_signinP);;
+router.post('/signinD', (req,res,next) => {
+    let Email = req.body.Email;
+    let Password = req.body.Password;
+    doctor.findOne({where:{Email:Email}}).then(user => {
+ 
+        if(!user){           
+           
+            res.sendFile(path.join(DirName,'views','errors/signinemailerrorD.html'));
+           
+       } else{
+           bcrypt.compare(Password, user.Password).then((returnedPassword) => {
+               if (returnedPassword){
+
+
+                res.redirect('/doctor/'+user.DSSN);
+                
+               }
+               else{
+                res.sendFile(path.join(DirName,'views','errors/siginwrongpassD.html'));
+                  
+               }
+           });
+       }
+    });
+})
+router.post('/signup',controller.post_signup);;
+
+router.get('/logout',(req,res,next) => {
+    res.redirect('/');
+})
+ router.post('/signupD',controller.post_signupD);;
+
 router.get('/signupD',controller.post_signupD)
 
-router.get('/adminD',controller.adminD)
-router.get('/adminP',controller.adminP)
+router.get('/adminD',controller.adminD);;
+router.get('/adminP',controller.adminP);;
+router.get('/',controller.mainroute);
 module.exports=router;
 

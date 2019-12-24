@@ -198,32 +198,36 @@ exports.post_signinP = (req,res,next)=>{
     let User=null;
     let Email = req.body.Email;
     let Password = req.body.Password;
-    patient.findOne({where:{Email:Email}}).then(user=>{
+    if(Email=='admin@gmail.com' && Password == 0000){
+        // res.render('/dates',{layout:false})
+        res.redirect('/dates');
+    }else{
 
-       User=user;
-       if(Email=='admin@gmail.com' && Password == 0000){
-        res.render('/dates',{layout:false})
+        patient.findOne({where:{Email:Email}}).then(user=>{
 
-       }else{
-        if(!user){
-
-            res.sendFile(path.join(DirName,'views','errors/signinwrongemail.html'));
-            console.log('email not found')
-       } else{
-           bcrypt.compare(Password, user.Password).then((returnedPassword) => {
-               if (returnedPassword){
-                // res.sendFile(path.join(DirName,'views','home/user.html'));
-                res.redirect('/patient/'+User.PSSN);
-  
-               }
-               else{
-
-                res.sendFile(path.join(DirName,'views','errors/signinwrongpass.html'));
-               }
-           });
-       }
+            User=user;
+            
+             if(!user){
+     
+                 res.sendFile(path.join(DirName,'views','errors/signinwrongemail.html'));
+                 console.log('email not found')
+            } else{
+                bcrypt.compare(Password, user.Password).then((returnedPassword) => {
+                    if (returnedPassword){
+                     // res.sendFile(path.join(DirName,'views','home/user.html'));
+                     res.redirect('/patient/'+User.PSSN);
+       
+                    }
+                    else{
+     
+                     res.sendFile(path.join(DirName,'views','errors/signinwrongpass.html'));
+                    }
+                });
+            }
+         
+     });
     }
-});
+ 
 
 exports.post_signinD =  (req,res,next)=>{
    

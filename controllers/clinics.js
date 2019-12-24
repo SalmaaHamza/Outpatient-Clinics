@@ -131,7 +131,6 @@ exports.patientEdit=(req,res,next) => {
     
     patient.findOne({where:{PSSN: Id}}).then(patient => {
      res.render('user',{patient:patient,url:patient.image.split('/')[2],layout:false});
-    console.log("path:" ,patient.image.split('/')[2] );
     })
     .catch(err => {
         console.log("editPatientError");
